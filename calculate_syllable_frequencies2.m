@@ -1,4 +1,4 @@
-function transcription = calculate_syllable_frequencies2(transcription_path,outpath)
+function transcription = calculate_syllable_frequencies(transcription_path,outpath)
     %%example!
     % transcription_path = "sub-A2055_transcription.csv";
     transcription = readtable(transcription_path);
