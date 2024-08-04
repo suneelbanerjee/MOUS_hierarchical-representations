@@ -4,7 +4,7 @@ Code, results, and manuscript drafts for Banerjee et al
 
 **Tables and text files**
 
-`dutch_celex_database_updated.csv` Contains phonetic pronunciations of Dutch words in the CELEX database. For more information, see [Sun &amp; Poeppel 2023](https://www.pnas.org/doi/10.1073/pnas.2215710120?utm_source=TOC&utm_medium=ealert&TOC_v120_i36=&ref=d8253441).
+`dutch_celex_database_updatedv2.csv` Contains phonetic pronunciations of Dutch words in the CELEX database. For more information, see [Sun &amp; Poeppel 2023](https://www.pnas.org/doi/10.1073/pnas.2215710120?utm_source=TOC&utm_medium=ealert&TOC_v120_i36=&ref=d8253441).
 
 `SUBTLEX-NL with pos and Zipf.xlsx` Contains word frequency measures of Dutch words in the SUBTLEX database, the most up-to-date version of the CELEX database. `Zipf` contains log-transformed values of `FREQCOUNT`, the number of word occurrences in the corpus. For more information, visit [OSF](https://osf.io/3d8cx/).
 

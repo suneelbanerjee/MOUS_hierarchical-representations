@@ -1,11 +1,9 @@
 function transcription = source_auditory_transcription(events_tsv,outpath)
 %Function to obtain onset times and text transcriptions of words
 %played in spoken word stimulus files for auditory cohort.
-%Takes in the 'events.tsv' file for a single subject and an output path (*.csv) for a single subject (included with MOUS
-%dataset) and prints a table containing onset time, word, and other metrics
-%from ForcedAligner. Table is returned in 
-
-
+%Takes in the 'events.tsv' file for a single subject and a directory to
+%save the output in and prints a table (sub-A2XXX_transcription.csv) containing onset time, word, and other metrics
+%from ForcedAligner. 
 
 %Get list of stimulus files played to all subjects
 off_on = readtable("MOUS_audio_onset_offsets.xlsx");
@@ -45,7 +43,18 @@ for k = 1:length(subj_audio_files)
     relevant_events = vertcat(relevant_events,segment);
 end
 %save
-writetable(relevant_events,outpath)
+% Original file name
+
+
+% Find the position of the first underscore and the last dot
+underscoreIndex = strfind(events_tsv, '_');
+dotIndex = strfind(events_tsv, '.');
+% Extract the prefix (up to the first underscore)
+events_tsv = char(events_tsv);
+subject = events_tsv(1:underscoreIndex(1)-1);
+% Construct the new file name
+newFileName = [subject '_transcription.csv'];
+writetable(relevant_events,fullfile(outpath,newFileName))
 transcription = relevant_events;
 
 
