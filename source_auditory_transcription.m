@@ -54,7 +54,7 @@ events_tsv = char(events_tsv);
 subject = events_tsv(1:underscoreIndex(1)-1);
 % Construct the new file name
 newFileName = [subject '_transcription.csv'];
-writetable(relevant_events,fullfile(outpath,newFileName))
+writetable(relevant_events,fullfile(newFileName))
 transcription = relevant_events;
 
 
