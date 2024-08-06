@@ -1,11 +1,16 @@
-function transcription = calculate_syllable_frequencies(transcription_path,outpath)
+function transcription = calculate_syllable_frequencies(transcription_path)
+    %This script saves out the largest, smallest, and mean occurrence count of the syllables found in a word.
+    %Log-transformation, or any other manipulation, takes place in SPM12 parametric regressor set up.
+    %The output is saved as a csv in the same location as 'sub-A2---_transcription.csv
+    %only input: the 'transcription.csv' file for a given subject.
+
     %%example!
     % transcription_path = "sub-A2055_transcription.csv";
     transcription = readtable(transcription_path);
     phonetics = readtable("dutch_celex_database_updatedv2.xlsx");
-    load("syllable_freq_table_new.mat"); % produced by master_table.ipynb
+    x=load("syllable_freq_table_new.mat"); % produced by master_table.ipynb
 
-    varNames = syllable_labels;
+    varNames = x.syllable;
     %% Initialize a new table to hold the merged columns
     cleanToOriginal = containers.Map('KeyType', 'char', 'ValueType', 'any'); % Explicitly set KeyType to 'char'
     T_new = table();

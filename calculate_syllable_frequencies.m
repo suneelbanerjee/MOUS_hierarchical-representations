@@ -1,15 +1,25 @@
-function transcription = calculate_syllable_frequencies(transcription_path,outpath)
+function transcription = calculate_syllable_frequencies(transcription_path)
+    %This script saves out the largest, smallest, and mean occurrence count of the syllables found in a word.
+    %Log-transformation, or any other manipulation, takes place in SPM12 parametric regressor set up.
+    %The output is saved as a csv in the same location as 'sub-A2---_transcription.csv
+    %only input: the 'transcription.csv' file for a given subject.
+
     %%example!
-    % transcription_path = "sub-A2055_transcription.csv";
+    % transcription_path = "/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source/sub-A2094/func/sub-A2094_transcription.csv";
     transcription = readtable(transcription_path);
     phonetics = readtable("dutch_celex_database_updatedv2.xlsx");
     load("syllable_freq_table_new.mat"); % produced by master_table.ipynb
 
-    varNames = syllable_labels;
+    varNames = syllable;
+    for s = 1:numel(varNames)
+        if ischar(varNames{s}) % Check if varNames{s} is a string
+            varNames{s} = strrep(varNames{s}, '''', ''); % Remove all single quotes from the string
+        end
+    end
     %% Initialize a new table to hold the merged columns
     cleanToOriginal = containers.Map('KeyType', 'char', 'ValueType', 'any'); % Explicitly set KeyType to 'char'
     T_new = table();
-    Count = syllable_counts;
+
     
     %% Model syllables independently of stress patterns they take on in a word
     for s = 1:numel(varNames)
@@ -53,7 +63,7 @@ function transcription = calculate_syllable_frequencies(transcription_path,outpa
     %% Insert '_raw' before the file extension
     rawFileName = insertBefore(transcription_path, dotIndex(end), '_syllabes_raw');
 
-    writetable(transcription,fullfile(outpath,rawFileName))
+    writetable(transcription,fullfile(rawFileName))
     %% Filter out all events in the table where no transcription was found
     emptyRows = cellfun(@isempty, transcription.Phonetic) | ismissing(transcription.Phonetic);
     transcription(emptyRows, :) = [];
@@ -70,7 +80,7 @@ function transcription = calculate_syllable_frequencies(transcription_path,outpa
         word = transcription.Phonetic(f);
         word_parts = split(word,"-");
         for i = 1:length(word_parts)
-            index = find(strcmp(syllable_labels,transpose(word_parts(i))));
+            index = find(strcmp(varNames,transpose(word_parts(i))));
             if isempty(index)
                 rows_missing_full_syllables = [rows_missing_full_syllables,f]; %get rid of a row even if only one syllable is missing
                 disp(strcat(transcription.Transcription(f), " ", transcription.Phonetic(f)))
@@ -79,9 +89,11 @@ function transcription = calculate_syllable_frequencies(transcription_path,outpa
             end
         end
         if ~isempty(indexes)
-            word_syllable_frequencies = syllable_counts(indexes);
+            word_syllable_frequencies = Count(indexes);
+        else
+            word_syllable_frequencies = NaN
         end
-        %%possible values to use as a parametric regressor
+        %possible values to use as a parametric regressor
         min_double = [min_double;min(word_syllable_frequencies)];
         max_double = [max_double;max(word_syllable_frequencies)];
         mean_double = [mean_double;mean(word_syllable_frequencies)];
@@ -95,6 +107,6 @@ function transcription = calculate_syllable_frequencies(transcription_path,outpa
     transcription.Minimum_Syllable_Frequency = min_double;
     transcription.Maximum_Syllable_Frequency = max_double;
     transcription.Mean_Syllable_Frequency = mean_double;
-    processed_FileName = insertBefore(transcription_path, dotIndex(end), '_syllables_processed');
-    writetable(transcription,fullfile(outpath,processed_FileName))
+    processed_FileName = insertBefore(transcription_path, dotIndex(end), '_syllables_processed')
+    writetable(transcription,fullfile(processed_FileName))
 end
