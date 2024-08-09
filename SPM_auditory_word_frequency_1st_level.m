@@ -9,7 +9,7 @@ cd(subject_path)
 subjects = dir('sub-A*');
 subjNames = extractfield(subjects, 'name');
 cd('/home/neel/Desktop/MOUS_hierarchical-representations')
-for m = 75:length(subjNames) %subj index
+for m = 1:length(subjNames) %subj index. 
     currentName = subjNames(m)
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
     % Remove rows with NaN values
@@ -116,7 +116,7 @@ for m = 75:length(subjNames) %subj index
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Zipf %- mean(regressors.Zipf); 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Zipf - mean(regressors.Zipf); 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
