@@ -9,5 +9,5 @@ for i = 1:length(subjects)
     events = fullfile(func,strcat(subject,'_task-auditory_events.tsv'));
     %source_auditory_transcription(events,func)
     transcription = fullfile(func,strcat(subject,'_transcription.csv'));
-    calculate_syllable_frequencies(transcription,strcat(subject,'_syllable_frequencies.csv'))
+    calculate_syllable_frequencies(transcription)
 end
