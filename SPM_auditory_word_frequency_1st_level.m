@@ -1,7 +1,7 @@
 %2023 SPM auditory 
 addpath('/home/neel/Downloads/spm12')
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A';
+outdir = '/home/neel/Documents/SPM_results/SPM-A_centered_Lg10';
 mkdir(outdir)
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
 cd(subject_path)
@@ -116,7 +116,7 @@ for m = 1:length(subjNames) %subj index.
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Zipf - mean(regressors.Zipf); 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Lg10WF - mean(regressors.Lg10WF); %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};

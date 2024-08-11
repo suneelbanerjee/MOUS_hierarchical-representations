@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Documents/SPM_results"
+		},
+		{
+			"path": "../../../../media/neel/MOUS/MOUS/MOUS/fmriprep_fresh"
+		},
+		{
+			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/source"
+		},
+		{
+			"path": "../sublexical_crossmodal"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
