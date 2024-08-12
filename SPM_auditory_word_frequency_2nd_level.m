@@ -1,8 +1,8 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-A_II_centered';
+output = '/home/neel/Documents/SPM_results/SPM-A_II_centered_lg10';
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A');
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_centered_Lg10');
 cd(char(firstlevel_dir))
 subjects = dir('sub-A*');
 subjNames = extractfield(subjects, 'name');

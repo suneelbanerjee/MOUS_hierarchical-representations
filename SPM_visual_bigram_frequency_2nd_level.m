@@ -1,13 +1,11 @@
-%SPM12 Group-level analysis script. 
-% Takes in an 'output' directory to save output,
-% and a 'firstlevel_dir' that contains all first-level results folders as input.
+%SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-A_syllables_centered_II_lg10';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_centered');
+output = '/home/neel/Documents/SPM_results/SPM-V_II_BG_centered_lg10';
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10_BG');
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))
-subjects = dir('sub-A*');
+subjects = dir('sub-V*');
 subjNames = extractfield(subjects, 'name');
 scans = {};
 
@@ -40,7 +38,7 @@ spm_jobman('run',matlabbatch)
 clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Syllable Frequency';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency Correlation';
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;
