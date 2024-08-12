@@ -38,7 +38,7 @@ Code, results, and manuscript drafts for Banerjee et al
 
 `SPM_auditory_syllable_frequency_1st_level.m` Runs SPM12 first-level analysis for Syllable Frequency across all auditory subjects. 
 
-`SPM_auditoty_syllable_frequency_2nd_lvel.m` Runs group-level analysis for syllable frequency.
+`SPM_auditory_syllable_frequency_2nd_lvel.m` Runs group-level analysis for syllable frequency.
 
 *Visual*
 
@@ -49,4 +49,10 @@ Code, results, and manuscript drafts for Banerjee et al
 `calculate_word_frequencies_visual.ipynb` generates CSV files containing both word frequency and minimum bigram frequency info for all words in the study. 
 
 `SPM_visual_word_frequency_1st_level.m` Runs SPM12 first-level analysis for Word Frequency across all visual subjects.
+
+`SPM_visual_word_frequency_2nd_level.m` Runs SPM12 group-level analysis for Word Frequency.
+
+`SPM_visual_bigram_frequency_1st_level.m` Runs SPM12 first-level analysis for Bigam Frequency across all visual subjects.
+
+`SPM_visual_bigram_frequency_2nd_level.m` Runs SPM12 group-level analysis for bigram frequency.
 
