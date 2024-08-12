@@ -1,9 +1,9 @@
-%2023 SPM auditory 
-addpath('/home/neel/Downloads/spm12')
+%2024 SPM auditory 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_centered_Lg10';
-mkdir(outdir)
+outdir = '/home/neel/Documents/SPM_results/SPM-A_uncentered_Lg10_lengthcontrol_zeros_negativepmod_poscon';
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
+
+mkdir(outdir)
 cd(subject_path)
 %mkdir SPM-A
 subjects = dir('sub-A*');
@@ -12,8 +12,15 @@ cd('/home/neel/Desktop/MOUS_hierarchical-representations')
 for m = 1:length(subjNames) %subj index. 
     currentName = subjNames(m)
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
+    transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
     % Remove rows with NaN values
-    regressors = rmmissing(regressors);
+    % regressors = rmmissing(regressors);
+
+    % replace rows with NaN values with 0s
+    numericVars = varfun(@isnumeric, regressors, 'OutputFormat', 'uniform');
+    regressors{:, numericVars} = fillmissing(regressors{:, numericVars}, 'constant', 0);
+
+
     %%0. Coregister. Uncomment and modify the below if this was not done by fmriprep. 
     
     % matlabbatch{1}.spm.spatial.coreg.estwrite.ref = {'/media/MOUS/MOUS/SynologyDrive/source/sub-A2124/func/sub-A2124_task-auditory_bold.nii,1'}; %functional. expand.
@@ -111,13 +118,13 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
     %length control. used to test effects of word length/duration, but not part of final analysis. 
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Length';
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = mean(regressors.durations)-regressors.durations; %demean
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
-    %regressor 2, frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Lg10WF - mean(regressors.Lg10WF); %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration %demean
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
+    %regressor 2, frequency
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Lg10WF; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
@@ -147,7 +154,7 @@ for m = 1:length(subjNames) %subj index.
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 -1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0]; %edit if including duration control. 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)

@@ -9,17 +9,18 @@ subjNames = extractfield(subjects, 'name');
 cd('/home/neel/Desktop/MOUS_hierarchical-representations') %change this to the location of the cloned code repo. 
 for m = 1:length(subjNames) %subj index
     currentName = subjNames(m);
-    regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_transcription_syllables_processed.csv'))));
+    regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_transcription_syllables_processed.csv'))),'Delimiter',',');
     disp(strcat("Number of onsets  = ", num2str(height(regressors))));
 
     % Log transform the specified column
     regressors.Minimum_Syllable_Frequency = log10(regressors.Minimum_Syllable_Frequency);
 
-    % Remove rows with NaN values
-    regressors = rmmissing(regressors);
+    % replace rows with NaN values with 0s
+    numericVars = varfun(@isnumeric, regressors, 'OutputFormat', 'uniform');
+    regressors{:, numericVars} = fillmissing(regressors{:, numericVars}, 'constant', 0);
 
-    % Remove rows with Inf values
-    regressors = regressors(~isinf(regressors.Minimum_Syllable_Frequency), :);
+    % % Remove rows with Inf values
+    % regressors = regressors(~isinf(regressors.Minimum_Syllable_Frequency), :);
 
     disp(strcat("Number of onsets after log transform, removing NaNs and Infs = ", num2str(height(regressors))));
 
@@ -119,13 +120,13 @@ for m = 1:length(subjNames) %subj index
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.onset= regressors.AlignOnset;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
-    %length control. used to test effects of word length/duration, but not part of final analysis. 
+    length control. used to test effects of word length/duration, but not part of final analysis. 
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Length';
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = mean(regressors.durations)-regressors.durations; %demean
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Duration %demean
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
-    %regressor 2, frequency
+    regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Minimum_Syllable_Frequency - mean(regressors.Minimum_Syllable_Frequency)
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - regressors.Minimum_Syllable_Frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
@@ -156,7 +157,7 @@ for m = 1:length(subjNames) %subj index
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 -1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 1 0]; %edit if including duration control. 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)
