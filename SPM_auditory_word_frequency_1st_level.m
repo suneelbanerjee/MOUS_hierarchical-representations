@@ -1,6 +1,6 @@
 %2024 SPM auditory 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_uncentered_Lg10_lengthcontrol_zeros_negativepmod_poscon';
+outdir = '/home/neel/Documents/SPM_results/SPM-A_uncentered_length_Zipf_zeroes_negpmod_poscon';
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
 
 mkdir(outdir)
@@ -13,7 +13,10 @@ for m = 1:length(subjNames) %subj index.
     currentName = subjNames(m)
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
     transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
-    % Remove rows with NaN values
+    % %Remove rows with NaN values
+    % notmissingidx = ~ismissing(regressors);
+    % removedidx = find(~notmissingidx);
+    % transcription = transcription(notmissingidx(:,3),:);
     % regressors = rmmissing(regressors);
 
     % replace rows with NaN values with 0s
@@ -123,7 +126,7 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Lg10WF; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
