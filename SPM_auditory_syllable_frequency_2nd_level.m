@@ -3,7 +3,7 @@
 % and a 'firstlevel_dir' that contains all first-level results folders as input.
 
 output = '/home/neel/Documents/SPM_results/SPM-A_syllables_centered_II_lg10';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_centered');
+firstlevel_dir = fullfile('');
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))

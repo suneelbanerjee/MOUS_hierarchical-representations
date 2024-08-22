@@ -1,7 +1,7 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-A_II_uncentered_length_Zipf_zeroes_negpmod_poscon';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_uncentered_length_Zipf_zeroes_negpmod_poscon');
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_');
+output = '/home/neel/Documents/SPM_results/SPM-A_II_';
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))
@@ -39,7 +39,7 @@ clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency';
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = -1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;
 spm_jobman('run',matlabbatch)
