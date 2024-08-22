@@ -23,6 +23,9 @@
 		{
 			"name": "Desktop",
 			"path": ".."
+		},
+		{
+			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/SPM_results"
 		}
 	],
 	"settings": {}

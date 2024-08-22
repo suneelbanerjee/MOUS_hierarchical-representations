@@ -1,6 +1,6 @@
 %2024 SPM auditory 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_uncentered_length_Zipf_zeroes_negpmod_poscon';
+outdir = '/home/neel/Documents/SPM_results/SPM-A_';
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
 
 mkdir(outdir)
@@ -11,8 +11,13 @@ subjNames = extractfield(subjects, 'name');
 cd('/home/neel/Desktop/MOUS_hierarchical-representations')
 for m = 1:length(subjNames) %subj index. 
     currentName = subjNames(m)
+    %if using new regressors:
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
     transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
+    %if using old regressors:
+    %regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_regressors.xlsx'))));
+
+    
     % %Remove rows with NaN values
     % notmissingidx = ~ismissing(regressors);
     % removedidx = find(~notmissingidx);
@@ -122,11 +127,11 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
     %length control. used to test effects of word length/duration, but not part of final analysis. 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration %demean
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration; %transcription.Duration - mean(transcription.Duration)%demean
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = regressors.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
