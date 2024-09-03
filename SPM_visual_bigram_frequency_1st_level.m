@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10_BG'
+outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_uncentered'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -12,9 +12,9 @@ subjNames = extractfield(subjects, 'name');
 
 
 
-for v=1:length(subjNames)
+for v=93:length(subjNames)
     currentName = char(subjNames(v))
-    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed.csv'))),'Delimiter',',')
+    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed.csv'))),'Delimiter',',');
     % Remove rows with NaN values
     %regressors = rmmissing(regressors);
     %1. File Selection
@@ -50,7 +50,7 @@ for v=1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Min Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.log10_Min_Bigram - mean(regressors.log10_Min_Bigram);
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     
