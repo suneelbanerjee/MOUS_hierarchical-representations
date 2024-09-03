@@ -1,6 +1,6 @@
 %2024 SPM auditory 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_';
+outdir = '/home/neel/Documents/SPM_results/SPM-A_multireg_test';
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
 
 mkdir(outdir)
@@ -9,7 +9,7 @@ cd(subject_path)
 subjects = dir('sub-A*');
 subjNames = extractfield(subjects, 'name');
 cd('/home/neel/Desktop/MOUS_hierarchical-representations')
-for m = 1:length(subjNames) %subj index. 
+for m = 2:length(subjNames) %subj index. 
     currentName = subjNames(m)
     %if using new regressors:
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
@@ -138,9 +138,26 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
     %Motion regressors. These should be produced by fmriprep. 
     ConfoundsRegressors = tdfread(char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-auditory_desc-confounds_regressors.tsv'))));
-    rp_name = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
-    matlabbatch{1}.spm.stats.fmri_spec.sess(1).multi_reg = {rp_name};
-    matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {''};
+    %rp_name = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
+    % Define the subject path and file name
+
+    % Extract the relevant columns
+    motion_regressors = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ...
+                        ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ...
+                        ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
+
+    % Define the output file name
+    output_file = fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt'));
+
+    % Write the motion regressors to a text file
+    dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
+
+    disp(['Motion regressors written to: ', output_file]);
+
+
+
+    matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
+
     matlabbatch{1}.spm.stats.fmri_spec.sess.hpf = 128;
     matlabbatch{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
     matlabbatch{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
