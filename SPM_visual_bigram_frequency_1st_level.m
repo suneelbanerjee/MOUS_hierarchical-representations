@@ -4,21 +4,23 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_uncentered'
+outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_uncentered_NO_lengthcontrol_multireg'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
 subjNames = extractfield(subjects, 'name');
 
-
-
-for v=93:length(subjNames)
+for v=1:length(subjNames)
     currentName = char(subjNames(v))
     regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed.csv'))),'Delimiter',',');
     % Remove rows with NaN values
     %regressors = rmmissing(regressors);
     %1. File Selection
-    ims = cellstr(spm_select('expand',[fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-visual_space-MNI152NLin6Asym_res-2_desc-preproc_bold.nii'))]));
+    try
+        ims = cellstr(spm_select('expand',[fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-visual_space-MNI152NLin6Asym_res-2_desc-preproc_bold.nii'))]));
+    catch
+        disp(strcat(currentName + " does not have task scans"))
+    end
     disp('Scans located')
     %2. Smoothing
     % matlabbatch{1}.spm.spatial.smooth.data = ims;
@@ -49,25 +51,37 @@ for v=93:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).onset = regressors.Onset
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
+    %should length control be applied here?
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength %- mean(regressors.log10_Min_Bigram);
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Min Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
-    %Motion regressors
+    %Motion regressors (produced by fmriprep)
     ConfoundsRegressors = tdfread(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-visual_desc-confounds_regressors.tsv')));
-    rp_name = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
-    matlabbatch{1}.spm.stats.fmri_spec.sess(1).multi_reg = {rp_name};
+    % Extract the relevant columns
+    motion_regressors = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ...
+                        ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ...
+                        ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
+    output_file = fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt'));
+    % Write the motion regressors to a text file
+    if ~exist(output_file, 'file')
+        dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
+        disp(['Motion regressors written to: ', output_file]);
+    end
+    matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
     %end of motion regressor lines
-    matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.hpf = 128;
     matlabbatch{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
     matlabbatch{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
     matlabbatch{1}.spm.stats.fmri_spec.volt = 1;
     matlabbatch{1}.spm.stats.fmri_spec.global = 'None';
-    matlabbatch{1}.spm.stats.fmri_spec.mthresh = 0.8;
+    matlabbatch{1}.spm.stats.fmri_spec.mthresh = 0.8; %could change this. 
     matlabbatch{1}.spm.stats.fmri_spec.mask = {''};
     matlabbatch{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
     spm_jobman('run',matlabbatch)
@@ -83,11 +97,12 @@ for v=93:length(subjNames)
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {fullfile(AnalysisDirectory, 'SPM.mat')};
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = char(strcat("Bigram Frequency Correlation"));
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 -1 0];
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 1 0];
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)
     disp('Contrast tested!')
     clear matlabbatch
 end
+
 

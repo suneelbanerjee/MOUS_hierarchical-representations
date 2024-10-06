@@ -73,7 +73,6 @@ for v=1:length(subjNames)
         dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
         disp(['Motion regressors written to: ', output_file]);
         matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
-
         %end of motion regressor lines
         %matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {''};
         matlabbatch{1}.spm.stats.fmri_spec.sess.hpf = 128;

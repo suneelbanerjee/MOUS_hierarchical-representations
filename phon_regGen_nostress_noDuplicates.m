@@ -57,6 +57,20 @@ for k = 1:length(subj_audio_files)
     matchingRowIndices = find(matchIndices);
     segment = off_on(matchingRowIndices,[4,5,9,10]);
     segment.AlignOnset = segment.AlignOnset + audio_start_times(k); %aligns the onset times with the master clock
+    if isempty(relevant_events) % If relevant_events is empty, no need to check
+        relevant_events = vertcat(relevant_events, segment);
+    else
+        % Check if this segment already exists in relevant_events
+        isDuplicate = any(ismember(relevant_events(:, [4, 5, 9, 10]), segment(:, [4, 5, 9, 10]), 'rows'));
+        
+        if isDuplicate
+            disp('Duplicate segment found:');
+            disp(segment); % Display the segment that's about to be duplicated
+        end
+        
+        % Append the segment regardless of duplication
+        relevant_events = vertcat(relevant_events, segment);
+    end
     relevant_events = vertcat(relevant_events,segment);
 end
 
