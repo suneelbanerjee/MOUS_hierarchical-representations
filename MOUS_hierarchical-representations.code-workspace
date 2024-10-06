@@ -25,6 +25,7 @@
 			"path": ".."
 		},
 		{
+			"name": "SPM_results",
 			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/SPM_results"
 		}
 	],

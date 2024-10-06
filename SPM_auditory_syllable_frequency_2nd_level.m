@@ -2,8 +2,8 @@
 % Takes in an 'output' directory to save output,
 % and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-A_II_syllables_phon_freqRegresors';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_phon_freqRegresors');
+output = '/home/neel/Documents/SPM_results/SPM-A_II_syllables_zeropadded_multireg_no_mthresh_lengthcontrol';
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_zeropadded_multireg_no_mthresh_lengthcontrol');
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))
@@ -51,7 +51,7 @@ matlabbatch{1}.spm.stats.results.spmmat = {fullfile(output, 'SPM.mat')};
 matlabbatch{1}.spm.stats.results.conspec.titlestr = '';
 matlabbatch{1}.spm.stats.results.conspec.contrasts = 1;
 matlabbatch{1}.spm.stats.results.conspec.threshdesc = 'none';
-matlabbatch{1}.spm.stats.results.conspec.thresh = 0.001;
+matlabbatch{1}.spm.stats.results.conspec.thresh = 0.0001;
 matlabbatch{1}.spm.stats.results.conspec.extent = 10;
 matlabbatch{1}.spm.stats.results.conspec.conjunction = 1;
 matlabbatch{1}.spm.stats.results.conspec.mask.none = 1;
