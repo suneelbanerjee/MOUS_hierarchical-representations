@@ -1,24 +1,86 @@
 import re
 
-# Define a set of IPA vowels in Dutch
-IPA_VOWELS = "ɪɛʏɔəɑieːyːøːoːaːuɛiœyɔu"
+# Define a list of IPA vowels in Dutch, including multi-character vowels
+IPA_VOWELS = ['eː', 'oː', 'aː', 'øː', 'yː', 'ɛ', 'œ', 'ɪ', 'ʏ', 'ə', 'i', 'e', 'a', 'ɑ', 'o', 'ɔ', 'u', 'y', 'ø', 'ʌʊ', 'ɛɪ', 'œy', 'ʌʊ', 'ɪː']
 
-# Define a set of stress markers
-STRESS_MARKERS = "ˈˌ"
+# Define stress markers
+STRESS_MARKERS = ['ˈ', 'ˌ']
+
+# Define permissible onset clusters in Dutch IPA
+# Each cluster is represented as a tuple of tokens
+ONSETS = [
+    ('p',), ('t',), ('k',), ('b',), ('d',), ('f',), ('v',), ('s',), ('z',), ('ʃ',), ('ʒ',),
+    ('m',), ('n',), ('l',), ('r',), ('j',), ('ʋ',),
+    ('s', 'p'), ('s', 't'), ('s', 'k'),
+    ('p', 'l'), ('p', 'r'), ('t', 'r'), ('k', 'l'), ('k', 'r'),
+    ('b', 'l'), ('b', 'r'), ('d', 'r'), ('ɣ', 'l'), ('ɣ', 'r'),
+    ('f', 'l'), ('f', 'r'),
+    ('s', 'l'), ('s', 'm'), ('s', 'n'),
+    # Add more clusters if necessary
+]
+
+def tokenize_transcription(transcription):
+    # Sort vowels by length in descending order to match multi-character vowels first
+    sorted_vowels = sorted(IPA_VOWELS + STRESS_MARKERS, key=len, reverse=True)
+    tokens = []
+    i = 0
+    while i < len(transcription):
+        # Check for multi-character vowels or stress markers
+        matched = False
+        for symbol in sorted_vowels:
+            if transcription[i:i+len(symbol)] == symbol:
+                tokens.append(symbol)
+                i += len(symbol)
+                matched = True
+                break
+        if not matched:
+            # Single character (consonant)
+            tokens.append(transcription[i])
+            i += 1
+    return tokens
+
+def maximal_onset(inter_consonants):
+    # Find the maximal onset cluster permissible in Dutch
+    for i in range(len(inter_consonants)):
+        onset_candidate = tuple(inter_consonants[i:])
+        if onset_candidate in ONSETS:
+            coda = inter_consonants[:i]
+            onset = inter_consonants[i:]
+            return coda, onset
+    # If no permissible onset found, assign all to coda
+    return inter_consonants, []
 
 def syllabify_ipa(transcription):
-    # Treat stress markers as part of the transcription
-    transcription = transcription.replace('ˈ', '|ˈ').replace('ˌ', '|ˌ')
+    # Tokenize the transcription
+    tokens = tokenize_transcription(transcription)
     
-    # Preserve all characters in the IPA transcription, but break based on vowel boundaries
-    syllable_pattern = re.compile(f"([^{IPA_VOWELS}]*[{IPA_VOWELS}]+[^{IPA_VOWELS}]*)")
+    # Identify vowel positions
+    vowel_positions = [i for i, token in enumerate(tokens) if token in IPA_VOWELS]
     
-    # Find all syllables
-    syllables = syllable_pattern.findall(transcription)
+    syllables = []
+    start = 0
     
-    # Join syllables with a hyphen or a syllable boundary marker
+    for idx, vowel_pos in enumerate(vowel_positions):
+        # Determine the end position of the syllable
+        if idx + 1 < len(vowel_positions):
+            next_vowel_pos = vowel_positions[idx + 1]
+            # Consonants between vowels (excluding stress markers)
+            inter_consonants = [token for token in tokens[vowel_pos + 1:next_vowel_pos] if token not in STRESS_MARKERS]
+            # Apply Maximal Onset Principle
+            coda, onset = maximal_onset(inter_consonants)
+            # Build the syllable
+            syllable = tokens[start:vowel_pos + 1] + coda
+            syllables.append(''.join(syllable))
+            # Include any stress markers between vowels in the onset of the next syllable
+            start = vowel_pos + 1 + len(coda)
+        else:
+            # Last syllable
+            syllable = tokens[start:]
+            syllables.append(''.join(syllable))
+    
+    # Join syllables with ' - '
     return ' - '.join(syllables)
-
+    
 def main():
     # Sample words and their IPA transcriptions
     words_ipa = {
@@ -27,7 +89,7 @@ def main():
         "gingen": "ɣˈɪŋən",
         "deuren": "dˈøːrən",
         "manke": "mˈɑŋkə",
-        "elektronisch": "ˌɛlɛktrˈonis",
+        "elektronisch": "ˌeːlɛktrˈoːnis",
         "woonplaats": "ʋˈoːnplaːts"
     }
 
