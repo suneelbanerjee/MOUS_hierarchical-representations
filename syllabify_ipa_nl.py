@@ -1,33 +1,48 @@
 import re
 
-# Define a list of IPA vowels in Dutch, including multi-character vowels
-IPA_VOWELS = ['eː', 'oː', 'aː', 'øː', 'yː', 'ɛ', 'œ', 'ɪ', 'ʏ', 'ə', 'i', 'e', 'a', 'ɑ', 'o', 'ɔ', 'u', 'y', 'ø', 'ʌʊ', 'ɛɪ', 'œy', 'ʌʊ', 'ɪː']
+# Updated list of IPA vowels in Dutch, including diphthongs
+IPA_VOWELS = [
+    # Long vowels
+    'aː', 'eː', 'iː', 'oː', 'uː', 'øː', 'yː', 
+    # Short vowels
+    'ɑ', 'ɛ', 'ɪ', 'ɔ', 'ʏ', 'ə', 'œ', 'ɵ',  # Added 'ɵ' here
+    # Diphthongs
+    'ɛi', 'œy', 'ɑu', 'ɔu', 'ɛu',
+    # Additional vowels
+    'i', 'e', 'a', 'o', 'u', 'y', 'ø',
+    # Additional diphthongs
+    'ɪː', 'ʌʊ', 'ʌu', 'aɪ', 'aʊ', 'ɔɪ',
+    # Rare or dialectal vowels (add as needed)
+]
 
 # Define stress markers
 STRESS_MARKERS = ['ˈ', 'ˌ']
 
 # Define permissible onset clusters in Dutch IPA
-# Each cluster is represented as a tuple of tokens
 ONSETS = [
-    ('p',), ('t',), ('k',), ('b',), ('d',), ('f',), ('v',), ('s',), ('z',), ('ʃ',), ('ʒ',),
-    ('m',), ('n',), ('l',), ('r',), ('j',), ('ʋ',),
-    ('s', 'p'), ('s', 't'), ('s', 'k'),
+    ('p',), ('t',), ('k',), ('b',), ('d',), ('f',), ('v',), ('s',), ('z',),
+    ('ʃ',), ('ʒ',), ('m',), ('n',), ('l',), ('r',), ('j',), ('ʋ',), ('ɣ',),
+    # Common two-consonant clusters
+    ('s', 'p'), ('s', 't'), ('s', 'k'), ('s', 'f'), ('s', 'x'),
     ('p', 'l'), ('p', 'r'), ('t', 'r'), ('k', 'l'), ('k', 'r'),
     ('b', 'l'), ('b', 'r'), ('d', 'r'), ('ɣ', 'l'), ('ɣ', 'r'),
-    ('f', 'l'), ('f', 'r'),
+    ('f', 'l'), ('f', 'r'), ('v', 'l'), ('v', 'r'),
     ('s', 'l'), ('s', 'm'), ('s', 'n'),
-    # Add more clusters if necessary
+    ('ʃ', 'r'), ('ʃ', 'l'),
+    # Three-consonant clusters
+    ('s', 'p', 'l'), ('s', 'p', 'r'), ('s', 't', 'r'), ('s', 'k', 'l'), ('s', 'k', 'r'),
+    # Add more clusters as needed
 ]
 
 def tokenize_transcription(transcription):
-    # Sort vowels by length in descending order to match multi-character vowels first
-    sorted_vowels = sorted(IPA_VOWELS + STRESS_MARKERS, key=len, reverse=True)
+    # Combine vowels and stress markers for tokenization
+    sorted_symbols = sorted(IPA_VOWELS + STRESS_MARKERS, key=len, reverse=True)
     tokens = []
     i = 0
     while i < len(transcription):
-        # Check for multi-character vowels or stress markers
+        # Attempt to match vowels or stress markers
         matched = False
-        for symbol in sorted_vowels:
+        for symbol in sorted_symbols:
             if transcription[i:i+len(symbol)] == symbol:
                 tokens.append(symbol)
                 i += len(symbol)
@@ -51,8 +66,11 @@ def maximal_onset(inter_consonants):
     return inter_consonants, []
 
 def syllabify_ipa(transcription):
+    # Remove stress markers for processing
+    transcription_clean = transcription.replace('ˈ', '').replace('ˌ', '')
+    
     # Tokenize the transcription
-    tokens = tokenize_transcription(transcription)
+    tokens = tokenize_transcription(transcription_clean)
     
     # Identify vowel positions
     vowel_positions = [i for i, token in enumerate(tokens) if token in IPA_VOWELS]
@@ -64,26 +82,33 @@ def syllabify_ipa(transcription):
         # Determine the end position of the syllable
         if idx + 1 < len(vowel_positions):
             next_vowel_pos = vowel_positions[idx + 1]
-            # Consonants between vowels (excluding stress markers)
-            inter_consonants = [token for token in tokens[vowel_pos + 1:next_vowel_pos] if token not in STRESS_MARKERS]
+            # Consonants between vowels
+            inter_consonants = tokens[vowel_pos + 1:next_vowel_pos]
             # Apply Maximal Onset Principle
             coda, onset = maximal_onset(inter_consonants)
             # Build the syllable
             syllable = tokens[start:vowel_pos + 1] + coda
             syllables.append(''.join(syllable))
-            # Include any stress markers between vowels in the onset of the next syllable
+            # Start index for next syllable
             start = vowel_pos + 1 + len(coda)
         else:
             # Last syllable
             syllable = tokens[start:]
             syllables.append(''.join(syllable))
     
+    # Reintroduce stress markers if necessary
+    # (Optional) You can adjust this part based on your requirements
+    
     # Join syllables with ' - '
     return ' - '.join(syllables)
-    
+
 def main():
     # Sample words and their IPA transcriptions
     words_ipa = {
+        "indruk": "ɪndrɵk",
+        "clowns": "klˈɔwns",
+        "boskruid": "bˈɵskrœyt",
+        "drukknop": "drˈɵknɔp",
         "irritante": "ˌɪɾritˈɑntə",
         "wegliep": "ʋˈɛɣlˌip",
         "gingen": "ɣˈɪŋən",
