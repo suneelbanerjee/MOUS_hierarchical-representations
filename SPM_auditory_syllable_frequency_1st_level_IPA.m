@@ -1,6 +1,6 @@
 %SPM12 First-level analysis. Requires an 'outdir' to save output, a 'sourcedir' where the regressor data (frequency tables) is saved, and a 'subject_path' where the preprocessed data is saved. 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_syllables_processed_no_mthresh_multireg_NO_duration_control';
+outdir = '/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_eSpeak';
 mkdir(outdir)
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
 cd(subject_path)
@@ -10,11 +10,11 @@ cd('/home/neel/Desktop/MOUS_hierarchical-representations') %change this to the l
 
 for m = 1:length(subjNames)
     currentName = subjNames(m);
-    regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_transcription_syllables_processed.csv'))),'Delimiter',',');
+    regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_IPA_syllable_frequency.csv'))),'Delimiter',',');
     disp(strcat("Number of onsets  = ", num2str(height(regressors))));
 
     % Log transform the specified column
-    regressors.Minimum_Syllable_Frequency = log10(regressors.Minimum_Syllable_Frequency);
+    regressors.Min_Freq_Count = log10(regressors.Min_Freq_Count);
 
     % replace rows with NaN values with 0s
     numericVars = varfun(@isnumeric, regressors, 'OutputFormat', 'uniform');
@@ -128,7 +128,7 @@ for m = 1:length(subjNames)
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - regressors.Minimum_Syllable_Frequency
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - regressors.Min_Freq_Count
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
