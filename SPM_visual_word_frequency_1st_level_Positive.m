@@ -12,7 +12,7 @@ subjNames = extractfield(subjects, 'name');
 
 
 
-for v=44:length(subjNames)
+for v=1:length(subjNames)
     currentName = char(subjNames(v))
     if exist(fullfile(subject_path,currentName,'func'))
         regressors = readtable(char(fullfile(source, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))),'Delimiter',',');
@@ -37,6 +37,10 @@ for v=44:length(subjNames)
         mkdir(fullfile(outdir, currentName))
         disp('Directory Created')
         AnalysisDirectory = char(fullfile(outdir, currentName));
+        if exist(char(fullfile(AnalysisDirectory,'SPM.mat')))
+            continue
+        end
+        
         matlabbatch{1}.spm.stats.fmri_spec.dir = {AnalysisDirectory};
         matlabbatch{1}.spm.stats.fmri_spec.timing.units = 'secs';
         matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2;

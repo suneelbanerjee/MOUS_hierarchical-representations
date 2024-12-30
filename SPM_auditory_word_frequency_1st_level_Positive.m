@@ -1,6 +1,6 @@
 %2024 SPM auditory 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_multireg_Positive';
+outdir = '/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-A_multireg_Positive';
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
 
 mkdir(outdir)
@@ -118,6 +118,10 @@ for m = 1:length(subjNames) %subj index.
     %load smoothed scans
     cd(char(fullfile(subject_path,currentName, 'func')))
     SmoothedScan = dir('J*.nii');
+    if isempty(SmoothedScan)
+        disp(['No smoothed scans found for subject: ', currentName]);
+        continue;
+    end
     cd(subject_path)
     %regressor 1, onset
     matlabbatch{1}.spm.stats.fmri_spec.sess.scans = cellstr(spm_select('expand', [fullfile(SmoothedScan.folder, SmoothedScan.name)]));
