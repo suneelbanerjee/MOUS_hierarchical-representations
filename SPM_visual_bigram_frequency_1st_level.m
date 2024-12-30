@@ -20,6 +20,7 @@ for v=1:length(subjNames)
         ims = cellstr(spm_select('expand',[fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-visual_space-MNI152NLin6Asym_res-2_desc-preproc_bold.nii'))]));
     catch
         disp(strcat(currentName + " does not have task scans"))
+        continue
     end
     disp('Scans located')
     %2. Smoothing
