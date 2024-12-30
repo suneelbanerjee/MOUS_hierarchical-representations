@@ -1,10 +1,6 @@
 {
 	"folders": [
 		{
-			"name": "MOUS_hierarchical-representations",
-			"path": "."
-		},
-		{
 			"name": "SPM_results",
 			"path": "../../Documents/SPM_results"
 		},
@@ -21,7 +17,16 @@
 			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/SPM_results"
 		},
 		{
+			"name": "source",
 			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/source"
+		},
+		{
+			"name": "fmriprep_fresh",
+			"path": "../../../../media/neel/MOUS/MOUS/MOUS/fmriprep_fresh"
+		},
+		{
+			"name": "MOUS_hierarchical-representations",
+			"path": "."
 		}
 	],
 	"settings": {}

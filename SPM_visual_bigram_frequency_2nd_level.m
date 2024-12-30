@@ -1,7 +1,8 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-V_II_Lg10BG_uncentered_NO_lengthcontrol_multireg';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10BG_uncentered_NO_lengthcontrol_multireg');
+output = '/home/neel/Documents/SPM_results/SPM-V_II_Lg10_mean_bigram';
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10_mean_bigram');
+%default = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))
@@ -49,7 +50,7 @@ matlabbatch{1}.spm.stats.results.spmmat = {fullfile(output, 'SPM.mat')};
 matlabbatch{1}.spm.stats.results.conspec.titlestr = '';
 matlabbatch{1}.spm.stats.results.conspec.contrasts = 1;
 matlabbatch{1}.spm.stats.results.conspec.threshdesc = 'none';
-matlabbatch{1}.spm.stats.results.conspec.thresh = 1e-07;
+matlabbatch{1}.spm.stats.results.conspec.thresh = 1e-02;
 matlabbatch{1}.spm.stats.results.conspec.extent = 10;
 matlabbatch{1}.spm.stats.results.conspec.conjunction = 1;
 matlabbatch{1}.spm.stats.results.conspec.mask.none = 1;
