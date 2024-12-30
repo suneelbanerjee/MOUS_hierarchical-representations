@@ -37,6 +37,9 @@ for v=1:length(subjNames)
         mkdir(fullfile(outdir, currentName))
         disp('Directory Created')
         AnalysisDirectory = char(fullfile(outdir, currentName));
+        if exist(fullfile(AnalysisDirectory, 'SPM.mat'))
+            continue
+        end
         matlabbatch{1}.spm.stats.fmri_spec.dir = {AnalysisDirectory};
         matlabbatch{1}.spm.stats.fmri_spec.timing.units = 'secs';
         matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2;
@@ -44,7 +47,11 @@ for v=1:length(subjNames)
         matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t0 = 8;
         %Load Smoothed Scans
         cd(strcat(subject_path, '/', currentName, '/func/'))
-        SmoothedScan = dir('G*.nii') 
+        SmoothedScan = dir('G*.nii')
+        if isempty(SmoothedScan)
+            disp(['No smoothed scans found for subject: ', currentName]);
+            continue;
+        end
         cd(subject_path)
         %Return to Batch
         matlabbatch{1}.spm.stats.fmri_spec.sess.scans = cellstr(spm_select('expand', [fullfile(SmoothedScan.folder, SmoothedScan.name)]));

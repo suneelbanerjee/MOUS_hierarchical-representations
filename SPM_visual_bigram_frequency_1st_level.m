@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_uncentered_NO_lengthcontrol_multireg'
+outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -35,6 +35,9 @@ for v=1:length(subjNames)
     mkdir(fullfile(outdir, currentName))
     disp('Directory Created')
     AnalysisDirectory = char(fullfile(outdir, currentName));
+    if exist(fullfile(AnalysisDirectory, 'SPM.mat'))
+        continue
+    end
     matlabbatch{1}.spm.stats.fmri_spec.dir = {AnalysisDirectory};
     matlabbatch{1}.spm.stats.fmri_spec.timing.units = 'secs';
     matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2;
@@ -43,6 +46,10 @@ for v=1:length(subjNames)
     %Load Smoothed Scans
     cd(strcat(subject_path, '/', currentName, '/func/'))
     SmoothedScan = dir('G*.nii') %either this or 'ssub-*'
+    if isempty(SmoothedScan)
+        disp(['No smoothed scans found for subject: ', currentName]);
+        continue;
+    end
     cd(subject_path)
     %Return to Batch
     matlabbatch{1}.spm.stats.fmri_spec.sess.scans = cellstr(spm_select('expand', [fullfile(SmoothedScan.folder, SmoothedScan.name)]));
