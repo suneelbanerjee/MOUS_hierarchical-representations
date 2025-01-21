@@ -1,7 +1,7 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/SPM-V_II_Lg10BG_multireg_november';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november');
+output = '/home/neel/Documents/SPM_results/alternate_parameter_contrasts/second_level/SPM-V_II_Lg10_mean_bigram';
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Lg10_mean_bigram');
 %default = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 mkdir(output)
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
@@ -39,7 +39,7 @@ spm_jobman('run',matlabbatch)
 clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Bigram Frequency Correlation';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Mean Bigram Frequency Correlation';
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;
