@@ -3,7 +3,7 @@ import re
 # Updated list of IPA vowels in Dutch, including diphthongs
 IPA_VOWELS = [
     # Long vowels
-    'aː', 'eː', 'iː', 'oː', 'uː', 'øː', 'yː', 
+    'aː', 'eː', 'iː', 'oː', 'uː', 'øː', 'yː',
     # Short vowels
     'ɑ', 'ɛ', 'ɪ', 'ɔ', 'ʏ', 'ə', 'œ', 'ɵ',  # Added 'ɵ' here
     # Diphthongs
@@ -34,13 +34,16 @@ ONSETS = [
     # Add more clusters as needed
 ]
 
+# Special cases to keep intact (e.g., "hɛɪt")
+SPECIAL_UNITS = ['hɛɪt']
+
 def tokenize_transcription(transcription):
-    # Combine vowels and stress markers for tokenization
-    sorted_symbols = sorted(IPA_VOWELS + STRESS_MARKERS, key=len, reverse=True)
+    # Combine special units, vowels, and stress markers for tokenization
+    sorted_symbols = sorted(SPECIAL_UNITS + IPA_VOWELS + STRESS_MARKERS, key=len, reverse=True)
     tokens = []
     i = 0
     while i < len(transcription):
-        # Attempt to match vowels or stress markers
+        # Attempt to match special units, vowels, or stress markers
         matched = False
         for symbol in sorted_symbols:
             if transcription[i:i+len(symbol)] == symbol:
@@ -68,16 +71,16 @@ def maximal_onset(inter_consonants):
 def syllabify_ipa(transcription):
     # Remove stress markers for processing
     transcription_clean = transcription.replace('ˈ', '').replace('ˌ', '')
-    
+
     # Tokenize the transcription
     tokens = tokenize_transcription(transcription_clean)
-    
-    # Identify vowel positions
-    vowel_positions = [i for i, token in enumerate(tokens) if token in IPA_VOWELS]
-    
+
+    # Identify vowel positions (includes special units)
+    vowel_positions = [i for i, token in enumerate(tokens) if token in IPA_VOWELS or token in SPECIAL_UNITS]
+
     syllables = []
     start = 0
-    
+
     for idx, vowel_pos in enumerate(vowel_positions):
         # Determine the end position of the syllable
         if idx + 1 < len(vowel_positions):
@@ -95,10 +98,7 @@ def syllabify_ipa(transcription):
             # Last syllable
             syllable = tokens[start:]
             syllables.append(''.join(syllable))
-    
-    # Reintroduce stress markers if necessary
-    # (Optional) You can adjust this part based on your requirements
-    
+
     # Join syllables with ' - '
     return ' - '.join(syllables)
 
@@ -115,7 +115,8 @@ def main():
         "deuren": "dˈøːrən",
         "manke": "mˈɑŋkə",
         "elektronisch": "ˌeːlɛktrˈoːnis",
-        "woonplaats": "ʋˈoːnplaːts"
+        "woonplaats": "ʋˈoːnplaːts",
+        "koppigheid": "kɔpəxhɛɪt"
     }
 
     for word, ipa_transcription in words_ipa.items():
