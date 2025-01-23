@@ -5,14 +5,13 @@ IPA_VOWELS = [
     # Long vowels
     'aː', 'eː', 'iː', 'oː', 'uː', 'øː', 'yː',
     # Short vowels
-    'ɑ', 'ɛ', 'ɪ', 'ɔ', 'ʏ', 'ə', 'œ', 'ɵ',  # Added 'ɵ' here
+    'ɑ', 'ɛ', 'ɪ', 'ɔ', 'ʏ', 'ə', 'œ', 'ɵ',
     # Diphthongs
     'ɛi', 'œy', 'ɑu', 'ɔu', 'ɛu',
     # Additional vowels
     'i', 'e', 'a', 'o', 'u', 'y', 'ø',
     # Additional diphthongs
-    'ɪː', 'ʌʊ', 'ʌu', 'aɪ', 'aʊ', 'ɔɪ',
-    # Rare or dialectal vowels (add as needed)
+    'ɪː', 'ʌʊ', 'ʌu', 'aɪ', 'aʊ', 'ɔɪ'
 ]
 
 # Define stress markers
@@ -34,8 +33,8 @@ ONSETS = [
     # Add more clusters as needed
 ]
 
-# Special cases to keep intact (e.g., "hɛɪt")
-SPECIAL_UNITS = ['hɛɪt']
+# Special cases to keep intact (e.g., "hɛɪt", "ɛiC" where C = consonant)
+SPECIAL_UNITS = ['hɛɪt', 'ɛi']
 
 def tokenize_transcription(transcription):
     # Combine special units, vowels, and stress markers for tokenization
@@ -116,7 +115,9 @@ def main():
         "manke": "mˈɑŋkə",
         "elektronisch": "ˌeːlɛktrˈoːnis",
         "woonplaats": "ʋˈoːnplaːts",
-        "koppigheid": "kɔpəxhɛɪt"
+        "koppigheid": "kɔpəxhɛɪt",
+        "aanleiding": "aːnleːdɪŋ",
+        "vrijheid": "vrɛiɦɛɪt"
     }
 
     for word, ipa_transcription in words_ipa.items():

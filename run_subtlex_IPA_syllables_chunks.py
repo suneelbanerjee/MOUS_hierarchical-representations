@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 chunk_size = 1000  # Adjust the chunk size as needed
 df = pd.read_excel('/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v2_cleaned_no_drop2.xlsx')
 
-output_file = '/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v3_IPA_syllables.csv'
+output_file = '/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v3_IPA_syllables_ijfix.csv'
 
 # Initialize the output file
 with open(output_file, 'w') as f:
