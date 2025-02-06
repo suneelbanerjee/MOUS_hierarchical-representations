@@ -6,14 +6,16 @@ import logging
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-chunk_size = 1000  # Adjust the chunk size as needed
+chunk_size = 10000  # Adjust the chunk size as needed
 df = pd.read_excel('/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v2_cleaned_no_drop2.xlsx')
 
-output_file = '/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v3_IPA_syllables_ijfix.csv'
+output_file = '/home/neel/Desktop/MOUS_hierarchical-representations/subtlex_v3_IPA_syllables_ijfix2.csv'
 
-# Initialize the output file
+# Initialize the output file with new columns
 with open(output_file, 'w') as f:
-    df.head(0).to_csv(f, index=False)  # Write the header
+    # Add 'IPA' and 'Syllables' columns to the header
+    header = list(df.columns) + ['IPA', 'Syllables']
+    pd.DataFrame(columns=header).to_csv(f, index=False)
 
 # Process the DataFrame in chunks
 for i in range(0, len(df), chunk_size):
