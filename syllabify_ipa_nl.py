@@ -11,7 +11,7 @@ IPA_VOWELS = [
     # Additional vowels
     'i', 'e', 'a', 'o', 'u', 'y', 'ø',
     # Additional diphthongs
-    'ɪː', 'ʌʊ', 'ʌu', 'aɪ', 'aʊ', 'ɔɪ'
+    'ɪː', 'ʌʊ', 'ʌu', 'aɪ', 'aʊ', 'ɔɪ',
 ]
 
 # Define stress markers
@@ -33,8 +33,8 @@ ONSETS = [
     # Add more clusters as needed
 ]
 
-# Special cases to keep intact (e.g., "hɛɪt", "ɛiC" where C = consonant)
-SPECIAL_UNITS = ['hɛɪt', 'ɛi']
+# Special units to keep intact
+SPECIAL_UNITS = ['hɛɪt', 'ɛɪ']
 
 def tokenize_transcription(transcription):
     # Combine special units, vowels, and stress markers for tokenization
@@ -74,7 +74,7 @@ def syllabify_ipa(transcription):
     # Tokenize the transcription
     tokens = tokenize_transcription(transcription_clean)
 
-    # Identify vowel positions (includes special units)
+    # Identify vowel positions (includes special units like 'ɛɪ')
     vowel_positions = [i for i, token in enumerate(tokens) if token in IPA_VOWELS or token in SPECIAL_UNITS]
 
     syllables = []
@@ -88,6 +88,9 @@ def syllabify_ipa(transcription):
             inter_consonants = tokens[vowel_pos + 1:next_vowel_pos]
             # Apply Maximal Onset Principle
             coda, onset = maximal_onset(inter_consonants)
+            # Check if 'ɛɪ' is split and keep it intact
+            if len(coda) > 0 and coda[-1] == 'ɛ' and tokens[vowel_pos] == 'ɪ':
+                coda[-1] += 'ɪ'  # Merge 'ɛ' and 'ɪ'
             # Build the syllable
             syllable = tokens[start:vowel_pos + 1] + coda
             syllables.append(''.join(syllable))
@@ -117,7 +120,8 @@ def main():
         "woonplaats": "ʋˈoːnplaːts",
         "koppigheid": "kɔpəxhɛɪt",
         "aanleiding": "aːnleːdɪŋ",
-        "vrijheid": "vrɛiɦɛɪt"
+        "vrijheid": "vrɛiɦɛɪt",
+        "blijk": "blˈɛɪk"
     }
 
     for word, ipa_transcription in words_ipa.items():

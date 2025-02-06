@@ -1,0 +1,545 @@
+Word,IPA,FREQcount,Zipf,CELEX,Equal # of Syllables
+hoi,hoː - i,7790,5.24709553121572,hOj,False
+sergeant,sɛr - ɣə - ɑnt,2714,4.78927216079162,sEr - ZAnt,False
+belachelijk,bə - lɑ - ʃlək,2553,4.762723219794151,b@ - lA - x@ - l@k,False
+deal,deː - ɑl,2471,4.748550793283533,dil,False
+weekend,(en)w - iː - kɛnd(nl),2440,4.743070106283943,wi - kEnt,False
+race,(en)ɹ - e - ɪs(nl),1151,4.416954805953948,res,False
+tape,taː - pə,752,4.232297303067455,tep,False
+live,li - və,716,4.211021482534555,lAjf,False
+cowboy,kɔʋ - boː - i,669,4.181577129567581,kM - bOj,False
+monsieur,mɔn - si - ɵr,589,4.126354338508898,m@ - S|,False
+coke,koː - kə,480,4.037647403240586,kok,False
+stoned,stoː - nɛt,459,4.018260158548329,stont,False
+proficiat,proː - fi - ʃɑt,446,4.005809849998691,pro - fi - si - jAt,False
+cake,kaː - kə,431,3.990986073681666,kek,False
+mille,mɪ - lə,430,3.989979597027486,mil,False
+freak,freː - ɑk,406,3.965096736091974,frik,False
+loyaliteit,loː - i - aː - li - tɛɪt,403,3.96188369197736,lo - ja - li - tKt,False
+sydney,sɪd - nə - i,396,3.95429283362987,sId - ni,False
+visioen,vi - ʒun,383,3.939833551234285,vi - zi - jun,False
+dealer,deː - aː - lər,368,3.922528693025815,di - l@r,False
+religieuze,reː - li - ɣi - jøː - zə,337,3.884419027144409,re - li - Gj| - z@,False
+patrouille,pɑ - trʌʊ - ɪ - lə,334,3.8805471339036,pA - tru - j@,False
+quitte,kvɪ - tə,324,3.867385687845629,kit,False
+analyse,aː - naː - li - ɪ - sə,322,3.864704849197858,a - na - l! - z@,False
+love,loː - və,304,3.83980216621354,l}f,False
+boy,boː - i,296,3.828258776183967,bOj,False
+business,by - zi - nəss,292,3.822369947220864,bIs - nIs,False
+database,daː - taː - baː - sə,291,3.820885178315173,da - ta - bes,False
+joint,joː - ɪnt,285,3.811868359995798,_Ojnt,False
+crash,(en)kɹ - aʃ(nl),283,3.808820666913793,krES,False
+badge,bɑd - ɣə,271,3.790071230900953,bEtS,False
+barbecue,bɑr - bə - ky - ə,269,3.786866091025742,bAr - b@ - kjuw,False
+clean,kleː - ɑn,238,3.733900227814893,klin,False
+loyaal,loː - i - aːl,235,3.728414329836861,lo - jal,False
+close,kloː - sə,235,3.728414329836861,klos,False
+jersey,jɛr - sə - i,228,3.715337809206642,_}r - si,False
+steak,steː - ɑk,224,3.707684844978117,stek,False
+game,(en)ɡ - e - ɪm(nl),219,3.697925007688961,gem,False
+deadline,deː - ɑd - li - nə,219,3.697925007688961,dEd - lAjn,False
+cruise,krœy - zə,219,3.697925007688961,krus,False
+file,fi - lə,216,3.691962060715284,fAjl,False
+software,(en)sɒftw - e - ə(nl),210,3.679784782164447,sOft - w)r,False
+spike,spi - kə,200,3.658698384287244,spAjk,False
+farao,faː - rʌʊ,200,3.658698384287244,fa - ra - o,False
+ace,aː - sə,180,3.613180901735939,es,False
+religieus,reː - li - ɣi - jøːs,169,3.585951248245029,re - li - Gj|s,False
+stewardess,steː - ʋɑrtss,168,3.583389031480428,stju - wAr - dEs,False
+cornflakes,kɔrn - flaː - kəs,163,3.570346174914452,kOrn - fleks,False
+circuit,sɪr - ku - i,160,3.562328202898605,sIr - kwi,False
+prototype,proː - toː - ti - ɪ - pə,155,3.548626925221216,pro - to - ti - p@,False
+trance,trɑn - sə,149,3.531593585922436,trAns,False
+mail,meː - ɪl,147,3.525764042261712,mel,False
+safe,saː - fə,146,3.522819661614931,sef,False
+cape,kaː - pə,143,3.513864818962004,kep,False
+playboy,plaːj - boː - i,141,3.507790671249811,ple - bOj,False
+goal,ɣoː - ɑl,140,3.504721439522134,gol,False
+face,faː - sə,139,3.501630362544993,fAs,False
+fouilleren,fʌʊ - ɪ - lɪː - rən,138,3.49851712712085,fu - je - r@,False
+bridge,brɪd - ɣə,138,3.49851712712085,brItS,False
+blues,bly - ɛs,137,3.495381413267991,bluws,False
+paranoia,paː - raː - noː - i - aː,136,3.492222894023161,pa - ra - no - ja,False
+avenue,aː - və - ny - ə,136,3.492222894023161,a - v@ - ny,False
+take,taː - kə,134,3.485836095361761,tek,False
+jeans,jeː - ɑns,134,3.485836095361761,_ins,False
+dealen,deː - aː - lən,132,3.47935396783384,di - l@,False
+typen,ti - ɪ - pən,130,3.472773622522519,ti - p@,False
+magazine,maː - ɣaː - zi - nə,128,3.466092037166003,mE - g@ - zin,False
+coyote,koː - i - oː - tə,127,3.462712296514623,ko - jo - t@,False
+hockey,hɔ - kə - i,123,3.44892401202899,hO - ki,False
+regime,reː - ɣi - mə,119,3.43468357291438,re - Zim,False
+bye,bi - ə,117,3.42738433417288,bAj,False
+charleston,ʃɑr - lɛ - stɔn,115,3.419960316093673,tSAl - st@n,False
+hole,hoː - lə,108,3.392928824807378,hol,False
+baseball,baː - zə - bɑl,105,3.380808192131525,bez - bOl,False
+bodyguard,boː - di - ɣy - ɑrt,104,3.376691625936693,bO - di - gArt,False
+apache,aː - pɑʃ,103,3.372535666165535,a - pA - tS@,False
+point,poː - ɪnt,100,3.359823700649397,pw)n,False
+care,kaː - rə,97,3.34672840255925,k)r,False
+ijshockey,ɛɪsh - ɔ - keː - i,95,3.337773559906323,Ks - hO - ki,False
+entertainment,(en) - ɛn - tə - te - ɪn - mənt(nl),95,3.337773559906323,En - t@r - ten - m@nt,False
+typemachine,ti - pə - maː - ʃi - nə,94,3.333225932155602,tip - mA - Si - n@,False
+damestoilet,daː - mɛ - stoː - i - lɛt,87,3.299984999016923,da - m@s - twA - lEt,False
+toiletpapier,toː - i - lɛt - paː - pir,85,3.290000778110322,twA - lEt - pa - pir,False
+home,(en)h - əʊm(nl),85,3.290000778110322,hom,False
+email,eː - meː - ɪl,84,3.284921252581047,e - mAj,False
+patrouilleren,pɑ - trʌʊ - ɪ - lɪː - rən,83,3.279781612928636,pA - tru - je - r@,False
+jockey,jɔ - kə - i,83,3.279781612928636,_O - ki,False
+speaker,speː - aː - kər,81,3.269316179250471,spi - k@r,False
+relaxed,reː - lɑk - sɛt,80,3.263987345745405,ri - lEkst,False
+foyer,foː - i - ər,80,3.263987345745405,fwA - je,False
+drive,dri - və,75,3.236315919147546,drAjf,False
+beat,bə - ɑt,75,3.236315919147546,bit,False
+lesbienne,lɛz - bi - nə,74,3.230563590258455,lEz - bi - jE - n@,False
+adieu,aː - di - y,74,3.230563590258455,a - dj|,False
+broche,brɔ - ʃə,73,3.224734046597731,brOS,False
+patience,paː - tin - sə,72,3.21882518698721,pa - SAns,False
+milkshake,(en) - mɪlk - ʃe - ɪk(nl),71,3.212834823298023,mIlk - Sek,False
+lounge,lʌʊŋ - ə,71,3.212834823298023,lMntS,False
+deuce,døː - sə,71,3.212834823298023,_us,False
+royaal,roː - i - aːl,69,3.200600366881011,ro - jal,False
+royaal,roː - i - aːl,69,3.200600366881011,ro - jal,False
+sweater,sʋeː - aː - tər,68,3.19435141760401,swE - t@r,False
+memoires,meː - moː - i - rɛs,68,3.19435141760401,me - mwa - r@s,False
+psyche,psɪʃ,67,3.188011239572991,psi - x@,False
+psyche,psɪʃ,67,3.188011239572991,psi - xe,False
+manoeuvre,maː - nu - ɵ - vrə,67,3.188011239572991,ma - n* - vr@,False
+herentoilet,hɪː - rən - toː - i - lɛt,67,3.188011239572991,he - r@ - twA - lEt,False
+abc,ɑpk,67,3.188011239572991,a - be - se,False
+afleidingsmanoeuvre,ɑ - flɛɪ - dɪŋ - smaː - nu - ɵ - vrə,66,3.181577129567581,Af - lK - dINs - ma - n* - vr@,False
+break,breː - ɑk,65,3.175046262408623,brek,False
+dominion,doː - mi - ni - ɔn,64,3.16841568350961,d@ - mIn - j@n,False
+league,leː - aː - ɣy - ə,63,3.161682300850642,lik,False
+money,moː - nə - i,61,3.147894016365008,m} - ni,False
+boiler,boː - i - lər,61,3.147894016365008,bOj - l@r,False
+vogue,voː - ɣy - ə,58,3.126354338508899,vO - g@,False
+bouillon,bʌʊ - ɪ - lɔn,56,3.111377182539246,bul - jOn,False
+ahoi,aːh - oː - i,56,3.111377182539246,a - hOj,False
+society,soː - si - ti,55,3.103690353872955,so - sA - j@ - ti,False
+heavy,heː - aː - vi,54,3.095865016360999,hE - vi,False
+leader,leː - aː - dər,52,3.079778196467544,li - d@r,False
+striptease,strɪp - tə - aː - zə,51,3.071505670501554,strIp - tis,False
+grapefruit,ɣraː - pɛ - frœyt,51,3.071505670501554,grep - frut,False
+hardware,(en)h - ɑːdw - e - ə(nl),49,3.054472331202773,hArd - w)r,False
+frame,fraː - mə,48,3.045698406895268,frem,False
+maillot,meː - ɪ - lɔt,45,3.018260158548329,mA - jo,False
+image,i - maː - ʒə,45,3.018260158548329,I - mItS,False
+slipstream,slɪp - strə - ɑm,44,3.008714840642098,slIp - strim,False
+donkey,dɔŋ - kə - i,44,3.008714840642098,dON - ki,False
+ongein,ɔn - ɣə - ɪn,42,2.988970782446341,ON - GKn,False
+volleybal,vɔ - lə - i - bɑl,40,2.96828618358649,vO - li - bAl,False
+square,skvaː - rə,40,2.96828618358649,skw)r,False
+beauty,bə - ʌʊ - ti,40,2.96828618358649,bju - ti,False
+tube,ty - bə,39,2.957562318194717,tSup,False
+tenue,teː - ny - ə,38,2.946566933893254,t@ - ny,False
+statement,staː - tə - mɛnt,38,2.946566933893254,stet - m@nt,False
+stagiaire,staː - ɣi - ɛː - rə,38,2.946566933893254,sta - Z) - r@,False
+fanmail,fɑn - meː - ɪl,38,2.946566933893254,fEn - mel,False
+controversieel,kɔn - troː - vɛr - si - eːl,37,2.935285923483565,kOn - tro - vEr - Sel,False
+revue,reː - vy - ə,35,2.911804827634042,r@ - vy,False
+repertoire,reː - pər - toː - i - rə,35,2.911804827634042,re - p@r - twar,False
+mailen,meː - ɪ - lən,35,2.911804827634042,me - l@,False
+boycot,boː - i - kɔt,35,2.911804827634042,bOj - kOt,False
+formaldehyde,fɔr - mɑl - deːh - i - ɪ - də,34,2.89957037121703,fOr - mAl - de - hi - d@,False
+voyeur,voː - i - øːr,32,2.874016266744642,vwA - j|r,False
+tissue,tɪ - sy - ə,32,2.874016266744642,tI - Su,False
+stagiair,staː - ɣi - ɛr,32,2.874016266744642,sta - Z)r,False
+racebaan,raː - sə - baːn,32,2.874016266744642,res - ban,False
+polaroid,poː - laː - roː - ɪt,32,2.874016266744642,po - la - rOjt,False
+manoeuvreren,maː - nu - ɵ - vrɪː - rən,32,2.874016266744642,ma - nu - vre - r@,False
+heat,heː - ɑt,31,2.86065230518666,hit,False
+guerrilla,ɣy - ər - rɪ - laː,29,2.832623581586417,g@ - ril - ja,False
+videotape,vi - də - oː - taː - pə,28,2.817900324765711,vi - de - jo - tep,False
+meeuw,meː - yʊ,28,2.817900324765711,mew,False
+roadie,roː - aː - di,27,2.802660358208974,ro - di,False
+fysiologie,fi - ʒoː - loː - ɣi,27,2.802660358208974,fi - zi - jo - lo - Gi,False
+bourgeois,bʌʊr - ɣə - oː - ɪs,27,2.802660358208974,bur - ZwA,False
+principieel,prɪn - si - pi - eːl,26,2.786866091025742,prIn - si - pjel,False
+tutoyeren,ty - toː - i - ɪː - rən,25,2.770475674837573,ty - twA - je - r@,False
+racewagen,raː - sə - ʋaː - ɣən,25,2.770475674837573,res - wa - G@,False
+fysiotherapie,fi - ʒɔ - tɪː - raː - pi,25,2.770475674837573,fi - zi - jo - te - ra - pi,False
+croissant,kroː - ɪ - sɑnt,25,2.770475674837573,krwA - sAn,False
+patrouillewagen,pɑ - trʌʊ - ɪ - lə - ʋaː - ɣən,24,2.753442335538792,pA - tru - j@ - wa - G@,False
+hotline,hɔt - li - nə,24,2.753442335538792,hOt - lAjn,False
+lettertype,lɛ - tər - ti - ɪ - pə,23,2.73571356857836,lE - t@r - ti - p@,False
+fake,faː - kə,23,2.73571356857836,fek,False
+console,kɔn - soː - lə,23,2.73571356857836,kOn - sol,False
+skinhead,skɪnh - ə - ɑt,22,2.717230162884348,skIn - hEt,False
+hoofdingenieur,hoːv - dɪŋ - eː - ni - ɵr,22,2.717230162884348,hovd - In - Z@n - j|r,False
+zeemeeuw,zeː - meː - yʊ,21,2.697925007688961,ze - mew,False
+stereotype,stɪː - rə - oː - ti - ɪ - pə,21,2.697925007688961,ste - re - jo - ti - p@,False
+royalty,roː - i - ɑl - ti,21,2.697925007688961,rO - j@l - ti,False
+remake,reː - maː - kə,21,2.697925007688961,ri - mek,False
+understatement,ɵn - dər - staː - tə - mɛnt,20,2.677721621600674,}n - d@r - stet - m@nt,False
+sweatshirt,sʋeː - ɑtsh - ɪrt,20,2.677721621600674,swEt - S}rt,False
+psychoanalyse,psɪx - oː - aː - naː - li - ɪ - sə,20,2.677721621600674,psi - xo - wa - na - l! - z@,False
+meisjesachtig,mɛɪʃ - sɑx - təx,20,2.677721621600674,mKs - j@s - Ax - t@x,False
+hypofyse,hi - poː - fi - ɪ - sə,20,2.677721621600674,hi - po - fi - z@,False
+fondue,fɔn - dy - ə,20,2.677721621600674,fOn - dy,False
+excelsior,ɛks - sɛl - ʃɔr,20,2.677721621600674,Ek - sEl - si - jOr,False
+boycotten,boː - i - kɔ - tən,20,2.677721621600674,bOj - kO - t@,False
+performance,pɛr - fɔr - mɑn - sə,19,2.656532322530736,p@r - fOr - m@ns,False
+hockeyen,hɔ - kə - i - ən,19,2.656532322530736,hO - ki - j@,False
+fysiotherapeut,fi - ʒɔ - tɪː - raː - pøːt,19,2.656532322530736,fi - zi - jo - te - ra - p|t,False
+dialyse,di - aː - li - ɪ - sə,19,2.656532322530736,di - ja - l! - z@,False
+douchegordijn,dʌʊx - ə - ɣɔr - dɛɪn,18,2.634255927819583,duS - GOr - dKn,False
+bravoure,braː - vʌʊ - rə,18,2.634255927819583,bra - vur,False
+soiree,soː - i - reː,17,2.610774831970061,swa - re,False
+racepaard,raː - sɛ - paːrt,17,2.610774831970061,res - part,False
+petticoat,pɛ - ti - koː - ɑt,17,2.610774831970061,pE - ti - kot,False
+office,ɔ - fəs,17,2.610774831970061,O - fi - s@,False
+muesli,my - ɛ - sli,17,2.610774831970061,mys - li,False
+conference,kɔn - fɪː - rɛn - sə,17,2.610774831970061,kOn - f@ - r@ns,False
+ratatouille,raː - taː - tʌʊ - ɪ - lə,16,2.585951248245029,ra - ta - tu - j@,False
+pistache,pi - stɑʃ,16,2.585951248245029,pis - tA - S@,False
+museumstuk,my - zøːm - stɵk,16,2.585951248245029,my - se - j}m - st}k,False
+guano,ɣy - aː - noː,16,2.585951248245029,gwa - no,False
+fysiologisch,fi - ʒoː - loː - ɣis,16,2.585951248245029,fi - zi - jo - lo - Gis,False
+chocoladecake,ʃoː - koː - laː - də - kaː - kə,16,2.585951248245029,So - ko - la - d@ - kek,False
+visionair,vi - ʒoː - nɛr,15,2.55962230952268,vi - zi - jo - n)r,False
+scope,skoː - pə,15,2.55962230952268,skop,False
+pace,paː - sə,15,2.55962230952268,pes,False
+minute,mi - nyt,15,2.55962230952268,mi - ny - t@,False
+joke,joː - kə,15,2.55962230952268,_ok,False
+exchange,ɛk - sxɑŋ - ə,15,2.55962230952268,Ek - tSenS,False
+cue,ky - ə,15,2.55962230952268,kju,False
+courgette,kur - ʒɛt,15,2.55962230952268,kur - ZE - t@,False
+bouillabaisse,bʌʊ - ɪ - laː - bɑj - sə,15,2.55962230952268,bu - ja - b) - z@,False
+vruchtencake,vrɵx - tən - kaː - kə,14,2.531593585922436,vr}x - t@ - kek,False
+tune,ty - nə,14,2.531593585922436,tSun,False
+toiletpot,toː - i - lɛt - pɔt,14,2.531593585922436,twA - lEt - pOt,False
+skyline,ski - li - nə,14,2.531593585922436,skAj - lAjn,False
+requiem,reːk - vim,14,2.531593585922436,re - kwi - jEm,False
+reading,reː - aː - dɪŋ,14,2.531593585922436,ri - dIN,False
+move,moː - və,14,2.531593585922436,muf,False
+grime,ɣri - mə,14,2.531593585922436,grim,False
+cockney,kɔk - nə - i,14,2.531593585922436,kOk - ni,False
+ceremonieel,sɪː - rə - moː - ni - eːl,14,2.531593585922436,se - r@ - mo - njel,False
+bourgeoisie,bʌʊr - ɣə - oː - i - zi,14,2.531593585922436,bur - ZwA - zi,False
+volleyballen,vɔ - lə - i - bɑ - lən,13,2.501630362544993,vO - li - bA - l@,False
+vaudeville,vʌʊ - də - vɪ - lə,13,2.501630362544993,vo - d@ - vil,False
+pointe,poː - ɪn - tə,13,2.501630362544993,pw)n - t@,False
+cottage,kɔ - taː - ʒə,13,2.501630362544993,kO - tItS,False
+choke,ʃoː - kə,13,2.501630362544993,Sok,False
+carrier,kɑɾ - rir,13,2.501630362544993,kE - ri - j@r,False
+toilettas,toː - i - lɛ - tɑs,12,2.469445679173591,twA - lE - tAs,False
+release,reː - lə - aː - zə,12,2.469445679173591,ri - lis,False
+mesjoche,mɛ - ʃɔʃ,12,2.469445679173591,m@ - SO - x@,False
+matchpoint,mɑtx - poː - ɪnt,12,2.469445679173591,mEtS - pOjnt,False
+joystick,joː - ɪ - stɪk,12,2.469445679173591,_Oj - stIk,False
+headhunter,heː - ɑdh - ɵn - tər,12,2.469445679173591,hEd - h}n - t@r,False
+grapefruitsap,ɣraː - pɛ - frœyt - sɑp,12,2.469445679173591,grep - frut - sAp,False
+gezondheidsfreak,ɣə - zɔndh - ɛɪds - freː - ɑk,12,2.469445679173591,x@ - zOnt - hKts - frik,False
+voyeurisme,voː - i - øː - rɪ - smə,11,2.43468357291438,vwA - j| - rIs - m@,False
+toilettafel,toː - i - lɛ - taː - fɛl,11,2.43468357291438,twA - lE - ta - f@l,False
+oeuvre,u - ɵ - vrə,11,2.43468357291438,* - vr@,False
+minutieus,mi - ny - ʃøːs,11,2.43468357291438,mi - ny - tsi - j|s,False
+geeuw,ɣeː - yʊ,11,2.43468357291438,xew,False
+gebeid,ɣə - bə - ɪt,11,2.43468357291438,x@ - bKt,False
+approach,ɑ - proː - ɑx,11,2.43468357291438,@ - protS,False
+volley,vɔ - lə - i,10,2.396895012024979,vO - li,False
+uittypen,œyt - ti - ɪ - pən,10,2.396895012024979,L - ti - p@,False
+teak,teː - ɑk,10,2.396895012024979,tik,False
+sprookjesachtig,sproːkj - sɑx - təx,10,2.396895012024979,sprok - j@s - Ax - t@x,False
+species,speː - sis,10,2.396895012024979,spe - si - jEs,False
+ready,reː - aː - di,10,2.396895012024979,rE - di,False
+poise,poː - i - zə,10,2.396895012024979,pwa - z@,False
+pantomime,pɑn - toː - mi - mə,10,2.396895012024979,pAn - to - mim,False
+paella,paː - laː,10,2.396895012024979,pa - El - ja,False
+lease,leː - aː - zə,10,2.396895012024979,lis,False
+flamboyant,flɑm - boː - i - ɑnt,10,2.396895012024979,flAm - bwA - jAnt,False
+escape,(en) - ɛ - ske - ɪp(nl),10,2.396895012024979,Es - kep,False
+chutney,ʃɵt - nə - i,10,2.396895012024979,tS}t - ni,False
+celluloid,sɛ - ly - loː - ɪt,10,2.396895012024979,sE - ly - lOjt,False
+beatnik,bə - ɑt - nɪk,10,2.396895012024979,bit - nIk,False
+toevalligerwijs,tu - vɑ - li - ɣə - ɣər - ʋɛɪs,9,2.355502326866755,tu - vA - l@ - G@r - wKs,False
+pancake,pɑn - kaː - kə,9,2.355502326866755,pAN - kek,False
+molecule,moː - lə - ky - lə,9,2.355502326866755,mo - l@ - kyl,False
+hockeywedstrijd,hɔ - kə - i - ʋɛt - strɛɪt,9,2.355502326866755,hO - ki - wEt - strKt,False
+hockeystick,hɔ - kə - ɪ - stɪk,9,2.355502326866755,hO - ki - stIk,False
+hachelijk,hɑ - ʃlək,9,2.355502326866755,hA - x@ - l@k,False
+blocnote,blɔk - noː - tə,9,2.355502326866755,blOk - not,False
+beaujolais,bə - ʌʊ - joː - lɑjs,9,2.355502326866755,bo - Zo - lE,False
+typefout,ti - pə - fʌʊt,8,2.30974483630608,tip - fMt,False
+touche,tu - ʃə,8,2.30974483630608,tuS,False
+stripteasetent,strɪp - tə - aː - zə - tɛnt,8,2.30974483630608,strIp - tis - tEnt,False
+sidewinder,si - də - ʋɪn - dər,8,2.30974483630608,sAjd - wAjn - d@r,False
+overdrive,oː - vər - dri - və,8,2.30974483630608,o - v@r - drAjf,False
+hometrainer,hoː - mɛ - trɑj - nər,8,2.30974483630608,hom - tre - n@r,False
+doucheruimte,dʌʊx - ɪː - rœym - tə,8,2.30974483630608,duS - rLm - t@,False
+cokes,koː - kəs,8,2.30974483630608,koks,False
+tearoom,teː - aː - roːm,7,2.258592313858698,ti - rum,False
+teakhout,teː - ɑkh - ʌʊt,7,2.258592313858698,tik - hMt,False
+stanleymes,stɑn - lə - i - mɛs,7,2.258592313858698,stEn - li - mEs,False
+scrimmage,skrɪ - maː - ʒə,7,2.258592313858698,skrI - mItS,False
+royeren,roː - i - ɪː - rən,7,2.258592313858698,rwA - je - r@,False
+roquefort,roːk - və - fɔrt,7,2.258592313858698,rOk - fOrt,False
+ragtime,rɑx - ti - mə,7,2.258592313858698,rEg - tAjm,False
+picture,pɪk - ty - rə,7,2.258592313858698,pIk - tj@r,False
+overhead,oː - vərh - eː - ɑt,7,2.258592313858698,o - v@r - h)t,False
+ongelukkigerwijs,ɔn - ɣə - lɵ - ki - ɣə - ɣər - ʋɛɪs,7,2.258592313858698,ON - G@ - l} - k@ - G@r - wKs,False
+mixed,mɪk - sɛt,7,2.258592313858698,mIkst,False
+manche,mɑnʃ,7,2.258592313858698,mAn - S@,False
+mailing,meː - ɪ - lɪŋ,7,2.258592313858698,me - lIN,False
+geeuwen,ɣeː - yw - ən,7,2.258592313858698,xe - w@,False
+forehand,foː - rəh - ɑnt,7,2.258592313858698,for - hEnt,False
+corduroy,kɔr - dy - roː - i,7,2.258592313858698,kOr - dy - rOj,False
+combine,kɔm - bi - nə,7,2.258592313858698,kOm - bAjn,False
+coating,koː - aː - tɪŋ,7,2.258592313858698,ko - tIN,False
+vintage,vɪn - taː - ʒə,6,2.200600366881011,vIn - tItS,False
+vieux,vi - ɵks,6,2.200600366881011,vj|,False
+serve,sɛr - və,6,2.200600366881011,s}rf,False
+sequoia,seːk - voː - i - aː,6,2.200600366881011,se - kwo - ja,False
+selfmade,sɛlf - maː - də,6,2.200600366881011,sElf - met,False
+reader,reː - aː - dər,6,2.200600366881011,ri - d@r,False
+peanuts,peː - aː - nɵts,6,2.200600366881011,pi - n}ts,False
+overheadkosten,oː - vərh - eː - ɑd - kɔ - stən,6,2.200600366881011,o - v@r - h)d - kOs - t@,False
+medley,mɛd - lə - i,6,2.200600366881011,mEd - li,False
+loyauteit,loː - i - ʌʊ - tɛɪt,6,2.200600366881011,lwA - jo - tKt,False
+hockeyer,hɔ - kə - i - ər,6,2.200600366881011,hO - ki - j@r,False
+gevechtstenue,ɣə - vɛxt - stə - ny - ə,6,2.200600366881011,x@ - vExts - t@ - ny,False
+flagstone,flɑx - stoː - nə,6,2.200600366881011,flEg - ston,False
+essence,ɛ - sɛn - sə,6,2.200600366881011,E - sAns,False
+directoire,di - rɛk - toː - i - rə,6,2.200600366881011,di - rEk - twar,False
+dementia,deː - mən - ʃaː,6,2.200600366881011,de - mEn - si - ja,False
+cartouche,kɑr - tu - ʃə,6,2.200600366881011,kAr - tuS,False
+bougainville,bʌʊ - ɣɑjn - vɪ - lə,6,2.200600366881011,bu - g) - vil,False
+barcarolle,bɑr - kaː - rɔ - lə,6,2.200600366881011,bAr - ka - rOl,False
+videogame,vi - də - oː - ɣaː - mə,5,2.133653577250398,vi - de - jo - gem,False
+verkenningspatrouille,vər - kɛ - nɪŋ - spɑ - trʌʊ - ɪ - lə,5,2.133653577250398,v@r - kE - nINs - pA - tru - j@,False
+tertiair,tɛr - ʃɛr,5,2.133653577250398,tEr - tsi - j)r,False
+stripteasedanseres,strɪp - tə - aː - zə - dɑn - sə - rɛs,5,2.133653577250398,strIp - tiz - dAn - s@ - rEs,False
+spectraalanalyse,spɛk - traː - laː - naː - li - ɪ - sə,5,2.133653577250398,spEk - tral - a - na - l! - z@,False
+sidecar,si - də - kɑr,5,2.133653577250398,sAjt - kAr,False
+portemonnaie,pɔr - tə - mɔ - nɑ - jə,5,2.133653577250398,pOr - t@ - mO - ne,False
+museumdirecteur,my - zøːm - di - rɛk - tøːr,5,2.133653577250398,my - se - j}m - di - rEk - t|r,False
+leadzanger,leː - ɑd - zɑŋ - ər,5,2.133653577250398,lid - sA - N@r,False
+ijsrevue,ɛɪs - rə - vy - ə,5,2.133653577250398,Ks - r@ - vy,False
+guerrillaoorlog,ɣy - ər - rɪ - laː - ɔːr - lɔx,5,2.133653577250398,g@ - ril - ja - or - lOx,False
+feature,feː - aː - ty - rə,5,2.133653577250398,fi - tS@r,False
+fauteuil,fʌʊ - tøː - ɪl,5,2.133653577250398,fo - tL,False
+dies,dis,5,2.133653577250398,di - jEs,False
+beignet,bə - ɪɣ - nɛt,5,2.133653577250398,b@n - je,False
+typekamer,ti - pə - kaː - mər,4,2.054472331202773,tip - ka - m@r,False
+toiletjuffrouw,toː - i - lɛtʲ - ɵ - frʌʊ,4,2.054472331202773,twA - lEt - j} - frMw,False
+toiletdeur,toː - i - lɛ - tøːr,4,2.054472331202773,twA - lE - d|r,False
+taupe,tʌʊ - pə,4,2.054472331202773,top,False
+synecdoche,si - nɛk - dɔʃ,4,2.054472331202773,si - nEg - dO - xe,False
+streaken,streː - aː - kən,4,2.054472331202773,stri - k@,False
+soit,soː - ɪt,4,2.054472331202773,swa,False
+researchteam,reː - zə - ɑrx - tiːm,4,2.054472331202773,ri - s}rtS - tim,False
+polaroidcamera,poː - laː - roː - ɪd - kaː - mə - raː,4,2.054472331202773,po - la - rOjt - ka - m@ - ra,False
+mijningenieur,mɛɪ - nɪŋ - eː - ni - ɵr,4,2.054472331202773,mKn - In - Z@n - j|r,False
+leasen,leː - aː - zən,4,2.054472331202773,li - z@,False
+landbouwingenieur,lɑnd - bʌʊ - ɪŋ - eː - ni - ɵr,4,2.054472331202773,lAnd - bMw - In - Z@n - j|r,False
+kaasfondue,kaː - sfɔn - dy - ə,4,2.054472331202773,kas - fOn - dy,False
+issue,ɪ - sy - ə,4,2.054472331202773,I - Su,False
+intakegesprek,ɪn - taː - kə - ɣə - sprɛk,4,2.054472331202773,In - tek - x@ - sprEk,False
+intake,ɪn - taː - kə,4,2.054472331202773,In - tek,False
+fouillering,fʌʊ - ɪ - lɪː - rɪŋ,4,2.054472331202773,fu - je - rIN,False
+elefantiasis,eː - lə - fɑn - ʃaː - zɪs,4,2.054472331202773,e - l@ - fAn - ti - ja - sIs,False
+dragline,drɑ - ɣli - nə,4,2.054472331202773,drEg - lAjn,False
+douchecel,dʌʊx - ə - sɛl,4,2.054472331202773,du - SEl,False
+cowboyfilm,kɔʋ - boː - i - fɪlm,4,2.054472331202773,kM - bOj - fIlm,False
+coat,koː - ɑt,4,2.054472331202773,kot,False
+coaster,koː - ɑ - stər,4,2.054472331202773,ko - st@r,False
+ballpoint,bɑl - poː - ɪnt,4,2.054472331202773,bAl - pOjnt,False
+baguette,baː - ɣy - ɛ - tə,4,2.054472331202773,ba - GE - t@,False
+angstvisioen,ɑŋst - vi - ʒun,4,2.054472331202773,ANst - fi - zi - jun,False
+typecasting,ti - pə - kɑ - stɪŋ,3,1.957562318194717,tAjp - kAs - tIN,False
+trolley,trɔ - lə - i,3,1.957562318194717,trO - li,False
+trenchcoat,trɛnx - koː - ɑt,3,1.957562318194717,trEntS - kot,False
+toiletemmer,toː - i - leː - tɛ - mər,3,1.957562318194717,twA - lEt - E - m@r,False
+systeemanalyse,sɪ - steː - maː - naː - li - ɪ - sə,3,1.957562318194717,sis - tem - a - na - l! - z@,False
+suisse,sœy - sə,3,1.957562318194717,swis,False
+stripteaseuse,strɪp - tə - aː - zøː - zə,3,1.957562318194717,strIp - ti - z| - z@,False
+spoiler,spoː - i - lər,3,1.957562318194717,spOj - l@r,False
+salesmanager,saː - lɛ - smaː - naː - ɣər,3,1.957562318194717,selz - mE - n@ - _@r,False
+royement,roː - i - ə - mɛnt,3,1.957562318194717,rwA - j@ - mEnt,False
+racecircuit,raː - sə - sɪr - kœyt,3,1.957562318194717,re - sIr - kwi,False
+pepersteak,peː - pər - steː - ɑk,3,1.957562318194717,pe - p@r - stek,False
+parachutesprong,paː - raː - ʃy - tɛ - sprɔŋ,3,1.957562318194717,pa - ra - Syt - sprON,False
+ounce,ʌʊn - sə,3,1.957562318194717,Mns,False
+nucleus,nɵ - kløːs,3,1.957562318194717,ny - kle - j@s,False
+nierdialyse,nir - di - aː - li - ɪ - sə,3,1.957562318194717,nir - di - ja - l! - z@,False
+liftboy,lɪft - boː - i,3,1.957562318194717,lIvd - bOj,False
+houseparty,hʌʊ - zə - pɑr - ti,3,1.957562318194717,hMs - pAr - ti,False
+headline,heː - ɑd - li - nə,3,1.957562318194717,hEd - lAjn,False
+guerrillastrijder,ɣy - ər - rɪ - lɑ - strɛɪ - dər,3,1.957562318194717,g@ - ril - ja - strK - d@r,False
+gebrouilleerd,ɣə - brʌʊ - ɪ - lɪrt,3,1.957562318194717,x@ - bru - jert,False
+fysioloog,fi - ʒoː - loːx,3,1.957562318194717,fi - zi - jo - lox,False
+elektrolyse,eː - lɛk - troː - li - ɪ - sə,3,1.957562318194717,e - lEk - tro - l! - s@,False
+cliche,kliʃ,3,1.957562318194717,kli - Se,False
+clearing,kleː - aː - rɪŋ,3,1.957562318194717,kli - rIN,False
+cacaoboter,kaː - kaː - oː - boː - tər,3,1.957562318194717,ka - kM - bo - t@r,False
+beits,bə - ɪts,3,1.957562318194717,bKts,False
+archetype,ɑrx - ə - ti - ɪ - pə,3,1.957562318194717,Ar - x@ - ti - p@,False
+zelfanalyse,zɛl - faː - naː - li - ɪ - sə,2,1.832623581586417,zElf - a - na - l! - z@,False
+vue,vy - ə,2,1.832623581586417,vy,False
+voile,voː - i - lə,2,1.832623581586417,vwa - j@,False
+verifieerbaar,və - ri - fi - eːr - baːr,2,1.832623581586417,ve - ri - fjer - bar,False
+uche,ɵʃ,2,1.832623581586417,} - x@,False
+typevaardigheid,ti - pə - vaːr - dəx - hɛɪt,2,1.832623581586417,tip - var - d@x - hKt,False
+toiletruimte,toː - i - lɛ - trœym - tə,2,1.832623581586417,twA - lEt - rLm - t@,False
+timesharing,ti - mɛsh - aː - rɪŋ,2,1.832623581586417,tAjm - S) - rIN,False
+suspense,sɵ - spɛn - sə,2,1.832623581586417,s}s - pEns,False
+stationstoilet,staː - ʃɔn - stoː - i - lɛt,2,1.832623581586417,stA - tSOns - twA - lEt,False
+stadsguerrilla,stɑts - ɣy - ər - rɪ - laː,2,1.832623581586417,stAts - g@ - rIl - ja,False
+spoorwegingenieur,spɔːr - ʋə - ɣɪŋ - ə - ni - ɵr,2,1.832623581586417,spor - wEx - In - Z@n - j|r,False
+setpoint,sɛt - poː - ɪnt,2,1.832623581586417,sEt - pOjnt,False
+schijnmanoeuvre,sxɛɪn - maː - nu - ɵ - vrə,2,1.832623581586417,sxKn - ma - n| - vr@,False
+royalist,roː - i - aː - lɪst,2,1.832623581586417,ro - ja - lIst,False
+revisionist,reː - vi - ʒoː - nɪst,2,1.832623581586417,r@ - vi - zi - jo - nIst,False
+remparachute,rɛm - paː - raː - ʃyt,2,1.832623581586417,rEm - pa - rA - Sy - t@,False
+racekak,raː - sə - kɑk,2,1.832623581586417,res - kAk,False
+rabies,raː - bis,2,1.832623581586417,ra - bi - jEs,False
+polaroidfoto,poː - laː - roː - ɪd - foː - toː,2,1.832623581586417,po - la - rOjt - fo - to,False
+peritoneum,pɪː - ri - toː - nøːm,2,1.832623581586417,pe - ri - to - ne - j}m,False
+patois,paː - toː - ɪs,2,1.832623581586417,pa - twA,False
+neurofysiologie,nøː - roː - fi - ʒoː - loː - ɣi,2,1.832623581586417,n| - ro - fi - si - jo - lo - Gi,False
+motorhome,moː - tɔrh - oː - mə,2,1.832623581586417,mo - tOr - hom,False
+milieufreak,mɪl - jøː - frə - ɑk,2,1.832623581586417,mi - lj| - frik,False
+microfiche,mi - kroː - fiʃ,2,1.832623581586417,mi - kro - fi - S@,False
+megajoule,meː - ɣaː - jʌʊ - lə,2,1.832623581586417,me - Ga - Zul,False
+megabyte,meː - ɣaː - bi - ɪ - tə,2,1.832623581586417,me - Ga - bAjt,False
+marque,mɑrk,2,1.832623581586417,mAr - ke,False
+manoeuvreerruimte,maː - nu - ɵ - vrɪːɾ - rœym - tə,2,1.832623581586417,ma - nu - vre - rLm - t@,False
+luxeauto,lɵk - soː - toː,2,1.832623581586417,lyk - s@ - M - to,False
+loyalist,loː - i - aː - lɪst,2,1.832623581586417,lo - ja - lIst,False
+leefmilieu,leːf - mi - li - y,2,1.832623581586417,lef - mi - lj|,False
+leasing,leː - aː - zɪŋ,2,1.832623581586417,li - zIN,False
+ladyshave,laː - dɪsh - aː - və,2,1.832623581586417,le - di - Sef,False
+jeansbroek,jeː - ɑnz - bruk,2,1.832623581586417,_inz - bruk,False
+ingenieursstudie,ɪn - ɣə - ni - ɵr - sty - di,2,1.832623581586417,In - Z@n - j|r - sty - di,False
+hockeyster,hɔ - kə - ɪ - stər,2,1.832623581586417,hO - ki - st@r,False
+hemolyse,heː - moː - li - ɪ - sə,2,1.832623581586417,he - mo - l! - z@,False
+hausse,hʌʊ - sə,2,1.832623581586417,hos,False
+guero,ɣy - ɪː - roː,2,1.832623581586417,gwe - ro,False
+gerace,ɣə - raː - sə,2,1.832623581586417,x@ - res,False
+gelukkigerwijs,ɣə - lɵ - ki - ɣə - ɣər - ʋɛɪs,2,1.832623581586417,x@ - l} - k@ - G@r - wKs,False
+geijkt,ɣɛɪjkt,2,1.832623581586417,x@ - Kkt,False
+geeuwhonger,ɣeː - yʊh - ɔŋ - ər,2,1.832623581586417,xew - hO - N@r,False
+geassocieerde,ɣə - ɑ - soː - si - eːr - də,2,1.832623581586417,x@ - A - so - Ser - d@,False
+fotokopieerapparaat,foː - toː - koː - pi - eː - rɑ - paː - raːt,2,1.832623581586417,fo - to - ko - pjer - A - pa - rat,False
+erlenmeyer,ɛr - lɛn - mə - i - ər,2,1.832623581586417,Er - l@ - mK - j@r,False
+emailleren,eː - meː - ɪ - lɪː - rən,2,1.832623581586417,e - mA - je - r@,False
+diskdrive,dɪsɡ - dri - və,2,1.832623581586417,dIzg - drAjf,False
+cowboylaars,kɔʋ - boː - i - laːrs,2,1.832623581586417,kM - bOj - lars,False
+communique,kɔ - my - nik,2,1.832623581586417,kO - my - ni - ke,False
+clone,kloː - nə,2,1.832623581586417,klon,False
+claves,klaː - vəs,2,1.832623581586417,klefs,False
+clairvoyance,klɑjr - voː - i - ɑn - sə,2,1.832623581586417,kl)r - vwA - jAn - s@,False
+cinemascope,si - nə - mɑ - skoː - pə,2,1.832623581586417,si - n@ - ma - skop,False
+carambole,kaː - rɑm - boː - lə,2,1.832623581586417,ka - rAm - bol,False
+cacaoboon,kaː - kaː - oː - boːn,2,1.832623581586417,ka - kM - bon,False
+bravourestuk,braː - vʌʊ - rɛ - stɵk,2,1.832623581586417,bra - vur - st}k,False
+bei,bə - iː,2,1.832623581586417,bK,False
+baseline,baː - zə - li - nə,2,1.832623581586417,bes - lAjn,False
+acacia,aː - kaː - ʃaː,2,1.832623581586417,a - ka - si - ja,False
+zebedeus,zeː - bə - døːs,1,1.656532322530736,ze - b@ - de - j}s,False
+zarzuela,zɑr - zy - eː - laː,1,1.656532322530736,tsAr - tswe - la,False
+waterstofperoxyde,ʋaː - tər - stɔf - pɪː - rɔk - si - ɪ - də,1,1.656532322530736,wa - t@r - stOf - pEr - Ok - si - d@,False
+voyant,voː - i - ɑnt,1,1.656532322530736,vwA - jAnt,False
+vliegtuigingenieur,vlix - tœy - ɣɪŋ - ə - ni - ɵr,1,1.656532322530736,vlix - tLx - In - Z@n - j|r,False
+vleesfondue,vleː - sfɔn - dy - ə,1,1.656532322530736,vles - fOn - dy,False
+vivace,vi - veːs,1,1.656532322530736,vi - va - tSe,False
+vicieus,vi - ʃøːs,1,1.656532322530736,vi - si - j|s,False
+veldtenue,vɛl - tə - ny - ə,1,1.656532322530736,vEl - t@ - ny,False
+vaudevilletheater,vʌʊ - də - vɪ - lɛ - teː - aː - tər,1,1.656532322530736,vo - d@ - vil - te - ja - t@r,False
+ureum,y - røːm,1,1.656532322530736,y - re - j}m,False
+typediploma,ti - pə - dɪ - ploː - maː,1,1.656532322530736,tip - di - plo - ma,False
+trancetoestand,trɑn - sə - tu - stɑnt,1,1.656532322530736,trAns - tu - stAnt,False
+toiletgerei,toː - i - lɛt - ɣɪː - rɛɪ,1,1.656532322530736,twA - lEt - x@ - rK,False
+toiletdoos,toː - i - lɛ - toːs,1,1.656532322530736,twA - lE - dos,False
+toiletblok,toː - i - lɛt - blɔk,1,1.656532322530736,twA - lEd - blOk,False
+taupekleurig,tʌʊ - pɛ - kløː - rəx,1,1.656532322530736,top - kl| - r@x,False
+stikstofoxyde,stɪk - stoː - fɔk - si - ɪ - də,1,1.656532322530736,stIk - stOf - Ok - si - d@,False
+sovereign,soː - vɪː - rɛɪɣn,1,1.656532322530736,sO - vrIn,False
+softwarepakket,sɔft - ʋaː - reː - pɑ - kɛt,1,1.656532322530736,sOft - w)r - pA - kEt,False
+societynieuws,soː - si - ti - niws,1,1.656532322530736,so - sA - j@ - ti - niws,False
+societyfiguur,soː - si - ti - fi - ɣyr,1,1.656532322530736,so - sA - j@ - ti - fi - Gyr,False
+share,ʃaː - rə,1,1.656532322530736,S)r,False
+safeloket,saː - fə - loː - kɛt,1,1.656532322530736,sef - lo - kEt,False
+ruche,rɵʃ,1,1.656532322530736,ry - S@,False
+royering,roː - i - ɪː - rɪŋ,1,1.656532322530736,rwA - je - rIN,False
+royaliteit,roː - i - aː - li - tɛɪt,1,1.656532322530736,ro - ja - li - tKt,False
+rigueur,ri - ɣy - øːr,1,1.656532322530736,ri - g|r,False
+revuedanseres,reː - vy - eː - dɑn - sə - rɛs,1,1.656532322530736,r@ - vy - dAn - s@ - rEs,False
+revanchepartij,rə - vɑ̃n - ʃə - pɑr - tɛɪ,1,1.656532322530736,r@ - vAnS - pAr - tK,False
+retouche,reː - tu - ʃə,1,1.656532322530736,r@ - tuS,False
+releasen,reː - lə - aː - zən,1,1.656532322530736,ri - li - s@,False
+racefiets,raː - sə - fits,1,1.656532322530736,res - fits,False
+projectingenieur,proː - jɛk - tɪŋ - ə - ni - ɵr,1,1.656532322530736,pro - jEkt - In - Z@n - j|r,False
+potentiometer,poː - tən - ti - oː - meː - tər,1,1.656532322530736,po - tEn - So - me - t@r,False
+politieel,poː - lit - si - ɛl,1,1.656532322530736,po - li - tSel,False
+pointer,poː - ɪn - tər,1,1.656532322530736,pOjn - t@r,False
+plantenfysiologie,plɑn - tən - fi - ʒoː - loː - ɣi,1,1.656532322530736,plAn - t@ - fi - zi - jo - lo - Gi,False
+piu,pi - y,1,1.656532322530736,pju,False
+petroleumgas,pɛ - troː - løːm - ɣɑs,1,1.656532322530736,pe - tro - le - j}m - GAs,False
+perigeum,pɪː - ri - ɣøːm,1,1.656532322530736,pe - ri - Ge - j}m,False
+partieel,pɑr - ʃeːl,1,1.656532322530736,pAr - tsi - jel,False
+panache,paː - nɑʃ,1,1.656532322530736,pa - nA - Se,False
+package,pɑ - kaː - ʒə,1,1.656532322530736,pE - k@tS,False
+overtypen,oː - vər - ti - ɪ - pən,1,1.656532322530736,o - v@r - ti - p@,False
+oleum,oː - løːm,1,1.656532322530736,o - le - j}m,False
+noviciaat,noː - vi - ʃaːt,1,1.656532322530736,no - vi - si - jat,False
+museumarchief,my - zøː - mɑr - ʃif,1,1.656532322530736,my - se - j}m - Ar - xif,False
+martiaal,mɑr - ʃaːl,1,1.656532322530736,mAr - tsi - jal,False
+marktanalyse,mɑrk - taː - naː - li - ɪ - sə,1,1.656532322530736,mArkt - a - na - l! - z@,False
+manoeuvreerbaar,maː - nu - ɵ - vrɪr - baːr,1,1.656532322530736,ma - nu - vrer - bar,False
+magnesiumoxyde,mɑɣ - nə - zi - y - mɔk - si - ɪ - də,1,1.656532322530736,mAG - ne - si - j}m - Ok - si - d@,False
+linotype,li - noː - ti - ɪ - pə,1,1.656532322530736,li - no - ti - p@,False
+licentiaat,li - sən - ʃaːt,1,1.656532322530736,li - sEn - si - jat,False
+kostenanalyse,kɔ - stə - naː - naː - li - ɪ - sə,1,1.656532322530736,kOs - t@ - a - na - l! - z@,False
+kinesiologie,ki - nə - ʒoː - loː - ɣi,1,1.656532322530736,ki - ne - zi - jo - lo - Gi,False
+kilojoule,ki - loː - jʌʊ - lə,1,1.656532322530736,ki - lo - Zul,False
+julienne,jy - li - nə,1,1.656532322530736,jy - li - jE - n@,False
+jockeypet,jɔ - kə - i - pɛt,1,1.656532322530736,_O - ki - pEt,False
+inhaalmanoeuvre,ɪnh - aːl - maː - nu - ɵ - vrə,1,1.656532322530736,IN - hal - ma - n| - vr@,False
+ingenieursdiploma,ɪn - ɣə - ni - ɵrz - dɪ - ploː - maː,1,1.656532322530736,In - Z@n - j|rz - di - plo - ma,False
+hymen,hi - ɪ - mən,1,1.656532322530736,hi - m@,False
+hydrolyse,hɪ - droː - li - ɪ - sə,1,1.656532322530736,hi - dro - l! - z@,False
+huidtype,hœy - ti - ɪ - pə,1,1.656532322530736,hL - ti - p@,False
+homoscene,hoː - mɔ - seː - nə,1,1.656532322530736,ho - mo - sin,False
+homecomputer,hoː - mə - kɔm - py - tər,1,1.656532322530736,hom - kOm - pju - t@r,False
+hockeyclub,hɔ - kə - ɪ - klɵp,1,1.656532322530736,hO - ki - kl}p,False
+headbangen,heː - ɑd - bɑŋ - ən,1,1.656532322530736,hEd - bE - N@,False
+guerrillero,ɣy - ər - rɪ - lɪː - roː,1,1.656532322530736,g@ - ril - je - ro,False
+guerrillatroepen,ɣy - ər - rɪ - lɑ - tru - pən,1,1.656532322530736,g@ - ril - ja - tru - p@,False
+grazioso,ɣraː - zi - oː - zoː,1,1.656532322530736,gra - tSo - zo,False
+goaltjesdief,ɣoː - ɑltʲ - ɛz - dif,1,1.656532322530736,gol - tj@z - dif,False
+gigue,ɣi - ɣy - ə,1,1.656532322530736,Zi - g@,False
+geprivilegieerd,ɣə - pri - vi - leː - ɣi - eːrt,1,1.656532322530736,x@ - pri - vi - le - Zert,False
+gepavoiseerd,ɣə - paː - voː - i - zɪrt,1,1.656532322530736,x@ - pa - vwA - zert,False
+geijsbeer,ɣɛɪjz - bɪr,1,1.656532322530736,x@ - Kz - ber,False
+galauniform,ɣaː - lʌʊ - ni - fɔrm,1,1.656532322530736,xa - la - y - ni - fOrm,False
+fysionomie,fi - ʒoː - noː - mi,1,1.656532322530736,fi - zi - jo - no - mi,False
+flageolet,flaː - ɣə - oː - lɛt,1,1.656532322530736,fla - Zo - lEt,False
+equipe,eːk - vi - pə,1,1.656532322530736,e - kip,False
+discjockey,dɪsk - jɔ - keː - i,1,1.656532322530736,dizg - djO - ki,False
+diffusionisme,dɪ - fy - ʒoː - nɪ - smə,1,1.656532322530736,dI - fy - zi - jo - nIs - m@,False
+computerresearch,kɔmp - ju - tər - reː - zə - ɑrx,1,1.656532322530736,kOm - pju - t@ - ri - s}rtS,False
+compote,kɔm - poː - tə,1,1.656532322530736,kOm - pOt,False
+cokesfabriek,koː - kɛ - sfɑ - brik,1,1.656532322530736,koks - fA - brik,False
+coiffeur,koː - ɪ - føːr,1,1.656532322530736,kwA - f|r,False
+cockneydialect,kɔk - nə - i - di - aː - lɛkt,1,1.656532322530736,kOk - nI - di - ja - lEkt,False
+clearinghouse,kleː - aː - rɪŋh - ʌʊ - zə,1,1.656532322530736,kli - rIN - hMs,False
+ceremonieus,sɪː - rə - moː - ni - jøːs,1,1.656532322530736,se - r@ - mo - nj|s,False
+campanile,kɑm - paː - ni - lə,1,1.656532322530736,kAm - pa - nil,False
+cakemeel,kaː - kə - meːl,1,1.656532322530736,kek - mel,False
+cacaoboom,kaː - kaː - oː - boːm,1,1.656532322530736,ka - kM - bom,False
+bridgespel,brɪd - ɣɛ - spɛl,1,1.656532322530736,brIt - SpEl,False
+breakdancing,breː - ɑɡ - dɑn - sɪŋ,1,1.656532322530736,brek - dEn - sIN,False
+bouillonblokje,bʌʊ - ɪ - lɔn - blɔk - jə,1,1.656532322530736,bul - jOm - blOk - j@,False
+bontcape,bɔnt - kaː - pə,1,1.656532322530736,bOnt - kep,False
+beidjes,bə - ɪt - jəs,1,1.656532322530736,bK - tj@s,False
+bedrijfstype,bə - drɛɪf - sti - ɪ - pə,1,1.656532322530736,b@ - drKfs - ti - p@,False
+baseballen,baː - zə - bɑ - lən,1,1.656532322530736,bez - bO - l@,False
+barzoi,bɑr - zoː - i,1,1.656532322530736,bAr - zOj,False
+baileybrug,bɑj - lə - ɪ - brɵx,1,1.656532322530736,bej - li - br}x,False
+baccalaureus,bɑk - kaː - lʌʊ - røːs,1,1.656532322530736,bA - ka - lM - re - j}s,False
+arbeidersmilieu,ɑr - bɛɪ - dɛr - smi - li - y,1,1.656532322530736,Ar - bK - d@rs - mi - lj|,False
+apartheidsregime,aː - pɑr - tɛɪds - rə - ɣi - mə,1,1.656532322530736,a - pArt - hKts - re - Zim,False
+amice,aː - mi - sə,1,1.656532322530736,a - mis,False
+achterspoiler,ɑx - tər - spoː - i - lər,1,1.656532322530736,Ax - t@r - spOj - l@r,False
