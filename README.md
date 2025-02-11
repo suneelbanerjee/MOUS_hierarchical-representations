@@ -1,5 +1,6 @@
 # *Evidence for hierarchical representations of written and spoken words from an open-science human neuroimaging dataset*
 
+![1739265304068](image/README/1739265304068.png)
 
 **Tables and text files**
 
