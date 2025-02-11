@@ -18,14 +18,13 @@ Code, results, and manuscript drafts for Banerjee et al
 
 **CELEX (used to confirm validity of syllabified IPA transcriptions)**
 
-`dutch_celex_database_updatedv2.csv` Contains phonetic pronunciations of Dutch words in the CELEX database. For more information, see [Sun &amp; Poeppel 2023](https://www.pnas.org/doi/10.1073/pnas.2215710120?utm_source=TOC&utm_medium=ealert&TOC_v120_i36=&ref=d8253441).
+`dutch_celex_database_updatedv2.csv` Contains phonetic pronunciations of Dutch words in the CELEX database. For more information, see supplement to [Sun &amp; Poeppel 2023](https://www.pnas.org/doi/10.1073/pnas.2215710120?utm_source=TOC&utm_medium=ealert&TOC_v120_i36=&ref=d8253441).
 
 `subtlex_phonetics.xlsx` The intersection of the CELEX database and SUBTLEX databases, contains phonetics and occurrence counts of most words in Dutch.
 
 `syllable_counts.csv` Cumulative CELEX syllable occurrences (per million) in the SUBTLEX text corpus.
 
 **[eSpeakNG](https://github.com/espeak-ng/espeak-ng?tab=readme-ov-file) (used to generate IPA syllabifications)**
-
 
 `subtlex_v3_IPA_syllables_ijfix2.csv` The cleaned SUBTLEX database, now including IPA syllabifications.
 
@@ -53,7 +52,7 @@ Code, results, and manuscript drafts for Banerjee et al
 
 `SPM_auditory_word_frequency_2nd_level.m`  Runs SPM12 group-level analysis for word frequency.
 
-`SPM_auditory_word_frequency_1st_level_Positive.m `Tests for a positive correlation with word frequency. 
+`SPM_auditory_word_frequency_1st_level_Positive.m `Tests for a positive correlation with word frequency.
 
 *Auditory - Syllable Frequency*
 
@@ -92,3 +91,11 @@ Code, results, and manuscript drafts for Banerjee et al
 `SPM_visual_bigram_frequency_2nd_level.m` Runs SPM12 group-level analysis for bigram frequency.
 
 `SPM_visual_max_bigram_frequency_1st_level.m` and `SPM_visual_mean_bigram_frequency_1st_level.m` test for correlations with max/mean bigram frequency respectively.
+
+**`/figures`**
+
+    `cluster_separation.ipynb` Thresholds a T-map, reports cluster peaks and calculates locations of cluster centers of mass.
+
+    `min_sublexical_vs_zipf_frequency.ipynb` Generates scatterplots (reported in supplement) comparing different frequency statistics.
+
+    `peak-scale_tmap.ipynb` divides all the voxels in a T-map by the peak T-stat in the map, making the T-map into a 'percent of peak activation' map.
