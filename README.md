@@ -1,6 +1,5 @@
 # *Evidence for hierarchical representations of written and spoken words from an open-science human neuroimaging dataset*
 
-Code, results, and manuscript drafts for Banerjee et al
 
 **Tables and text files**
 
@@ -98,4 +97,14 @@ Code, results, and manuscript drafts for Banerjee et al
 
     `min_sublexical_vs_zipf_frequency.ipynb` Generates scatterplots (reported in supplement) comparing different frequency statistics.
 
-    `peak-scale_tmap.ipynb` divides all the voxels in a T-map by the peak T-stat in the map, making the T-map into a 'percent of peak activation' map.
+    `peak-scale_tmap.ipynb` divides all the voxels in a T-map by the peak T-stat in the map, making the T-map into a 'percent of peak activation' (PPA) )map.
+
+    `LR_tmap_split.ipynb` Splits a T-map down the middle into left and right halves. Makes for easier visualizations.
+
+    `mricrogl_renderings.py` Script that generates 3D renderings of T-maps. To run this script and the following, paste this code into the scripting interface of [MRIcroGL](https://www.nitrc.org/projects/mricrogl).
+
+    `mricrogl_LR_renderings.py` Fetches left/right views of a T-map and renders them separately.
+
+    `mricrogl_dual-contrast_mosaic_axial.py` Juxtaposes two PPA maps in axial slices.
+
+    `mricrogl_dual-contrast_mosaic_sagittal.py` Does the above in sagittal slices.
