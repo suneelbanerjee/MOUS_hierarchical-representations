@@ -6,17 +6,12 @@ height = 0.70 #darkest value, set to 70%
 # Load MNI template
 gl.loadimage('mni152')
 
-# Load first contrast (sublexical, blue)
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_syllables_IPA_eSpeak_ijfix2/spmT_0001_peak-scaled.nii.gz')  
+# Load contrast (jet)
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_multireg_test (FINAL)/spmT_0001_peak-scaled.nii.gz')  
 gl.minmax(1, height, 1)  
-gl.colorname(1, '7cool')  
+gl.colorname(1, 'jet')  
 gl.opacity(1, 100)  # Fully opaque
 
-# Load second contrast (lexical, red
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_multireg_test (FINAL)/spmT_0001_peak-scaled.nii.gz')  
-gl.minmax(2, height, 1)  
-gl.colorname(2, '1red')  
-gl.opacity(2, 100)  # Fully opaque
 
 # Ensure the cross-slice view is OFF
 gl.shaderadjust('crosshairs', 0)  # Disable crosshairs
@@ -28,8 +23,8 @@ gl.colorbarposition(0)
 gl.mosaic("S H -0.3 62 60 58 56 54 52")
 
 # Save the mosaic
-gl.savebmp("/Users/neel/Desktop/mosaic_dual_contrast_sagR.png")
+gl.savebmp("/Users/neel/Desktop/auditory_words_sagR.png")
 
 gl.mosaic("Z H -0.3 -62 -60 -58 -56 -54 -52")  # Axial-only, single row")
 
-gl.savebmp("/Users/neel/Desktop/mosaic_dual_contrast_sagL.png")
+gl.savebmp("/Users/neel/Desktop/auditory_words_sagL.png")

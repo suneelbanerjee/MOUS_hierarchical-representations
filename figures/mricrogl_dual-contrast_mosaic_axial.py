@@ -2,20 +2,20 @@ import gl
 
 gl.resetdefaults()
 gl.backcolor(0, 0, 0)  # Set dark background
-
+height = 0.50 #darkest value, set to 50%
 # Load MNI template
 gl.loadimage('mni152')
 
-# Load first contrast (red)
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_syllables_IPA_eSpeak_ijfix2/spmT_0001_peak-scaled.nii.gz')  
-gl.minmax(1, 0.7, 1)  
+# Load first contrast (red, words)
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II_Zipf_multireg_december_allsubs (FINAL)/spmT_0001_peak-scaled.nii.gz')  
+gl.minmax(1, height, 1)  
 gl.colorname(1, '1red')  
 gl.opacity(1, 100)  # Fully opaque
 
-# Load second contrast (blue)
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_multireg_test (FINAL)/spmT_0001_peak-scaled.nii.gz')  
-gl.minmax(2, 0.7, 1)  
-gl.colorname(2, '3blue')  
+# Load second contrast (blue, sublexical)
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II_Lg10BG_multireg_november/spmT_0001_peak-scaled.nii.gz')  
+gl.minmax(2, height, 1)  
+gl.colorname(2, '7cool')  
 gl.opacity(2, 100)  # Fully opaque
 
 # Ensure the cross-slice view is OFF
@@ -25,7 +25,7 @@ gl.shaderadjust('crosshairs', 0)  # Disable crosshairs
 gl.colorbarposition(0)
 
 # Generate mosaic (axial slices only, no cross-slice view)
-gl.mosaic("A -24 -16 -8 0 8 16 24 32 40 48 56;")  # Axial-only, single row
+gl.mosaic("A -18 -13 -8 -3 2")  # Axial-only, single row
 
 # Save the mosaic
-gl.savebmp("/Users/neel/Desktop/mosaic_dual_contrast.png")
+gl.savebmp("/Users/neel/Desktop/second_level/visual_dual_contrast.png")
