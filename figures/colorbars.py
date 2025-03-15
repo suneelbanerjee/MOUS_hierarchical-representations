@@ -13,7 +13,7 @@ for subdir in os.listdir(master_dir):
     if os.path.isdir(subdir_path):  # Ensure it's a directory
         # Paths to required files
         u_threshold_path = os.path.join(subdir_path, 'u_threshold.txt')
-        cluster_centroids_path = os.path.join(subdir_path, 'cluster_centroids.csv')
+        cluster_centroids_path = os.path.join(subdir_path, 'roi', 'cluster_centroids.csv')
 
         # Check if required files exist
         if os.path.exists(u_threshold_path) and os.path.exists(cluster_centroids_path):

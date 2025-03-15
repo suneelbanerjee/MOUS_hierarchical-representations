@@ -11,9 +11,11 @@ gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_syllables_IPA_eSpeak_i
 gl.minmax(1, height, 1)  
 gl.colorname(1, '7cool')  
 gl.opacity(1, 100)  # Fully opaque
+gl.colorfromzero(1, 1)  # Set color range to start from zero for the first overlay
+
 
 # Load second contrast (lexical, red
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II_multireg_test (FINAL)/spmT_0001_peak-scaled.nii.gz')  
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-A_II/spmT_0001_peak-scaled.nii.gz')  
 gl.minmax(2, height, 1)  
 gl.colorname(2, '1red')  
 gl.opacity(2, 100)  # Fully opaque
@@ -28,8 +30,8 @@ gl.colorbarposition(0)
 gl.mosaic("S H -0.3 62 60 58 56 54 52")
 
 # Save the mosaic
-gl.savebmp("/Users/neel/Desktop/mosaic_dual_contrast_sagR.png")
+gl.savebmp("/Users/neel/Desktop/second_level/mosaic_dual_contrast_sagR.png")
 
 gl.mosaic("Z H -0.3 -62 -60 -58 -56 -54 -52")  # Axial-only, single row")
 
-gl.savebmp("/Users/neel/Desktop/mosaic_dual_contrast_sagL.png")
+gl.savebmp("/Users/neel/Desktop/second_level/mosaic_dual_contrast_sagL.png")
