@@ -100,7 +100,7 @@
 
     `peak-scale_tmap.ipynb` divides all the voxels in a T-map by the peak T-stat in the map, making the T-map into a 'percent of peak activation' (PPA) )map.
 
-    `LR_tmap_split.ipynb` Splits a T-map down the middle into left and right halves. Makes for easier visualizations.
+    `LR_tmap_split_Ke.ipynb` Splits a T-map down the middle into left and right halves and applies extent thresholding. Makes for easier visualizations.
 
     `mricrogl_renderings.py` Script that generates 3D renderings of T-maps. To run this script and the following, paste this code into the scripting interface of [MRIcroGL](https://www.nitrc.org/projects/mricrogl).
 

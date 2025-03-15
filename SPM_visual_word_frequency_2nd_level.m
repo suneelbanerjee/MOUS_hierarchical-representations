@@ -1,8 +1,8 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/alternate_parameter_contrasts/second_level/SPM-V_II_Zipf_multireg_positive'
+output = '/home/neel/Documents/SPM_results/second_level/SPM-V_II'
 %'/home/neel/Documents/SPM_results/second_level/SPM-V_II_Zipf_multireg_december_allsubs';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Zipf_multireg_positive')
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Zipf_multireg')
 %
 % fullfile('/home/neel/Documents/SPM_results/SPM-V_Zipf_multireg');
 mkdir(output)

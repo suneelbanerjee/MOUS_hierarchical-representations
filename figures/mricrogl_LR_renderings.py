@@ -9,10 +9,10 @@ for subdir in os.listdir(master_dir):
     subdir_path = os.path.join(master_dir, subdir)
     if os.path.isdir(subdir_path):  # Ensure it's a directory
         # Paths to left and right hemisphere T-maps
-        left_nii_path = os.path.join(subdir_path, 'spmT_0001_left.nii.gz')
-        right_nii_path = os.path.join(subdir_path, 'spmT_0001_right.nii.gz')
+        left_nii_path = os.path.join(subdir_path, 'spmT_0001_left_Ke_20.nii.gz')
+        right_nii_path = os.path.join(subdir_path, 'spmT_0001_right_Ke_20.nii.gz')
         u_threshold_path = os.path.join(subdir_path, 'u_threshold.txt')
-        cluster_centroids_path = os.path.join(subdir_path, 'cluster_centroids.csv')
+        cluster_centroids_path = os.path.join(subdir_path, 'roi', 'cluster_centroids.csv')
 
         # Print debugging info
         print(f"Processing: {subdir_path}")
