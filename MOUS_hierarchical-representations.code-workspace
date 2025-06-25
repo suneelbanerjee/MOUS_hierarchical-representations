@@ -19,6 +19,9 @@
 		{
 			"name": "fmriprep_fresh",
 			"path": "../../../../media/neel/MOUS/MOUS/MOUS/fmriprep_fresh"
+		},
+		{
+			"path": "../.."
 		}
 	],
 	"settings": {}
