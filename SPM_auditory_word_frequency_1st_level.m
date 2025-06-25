@@ -140,6 +140,8 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
+    %regressor 3, sublexical frequency
+    
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});

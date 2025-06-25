@@ -7,7 +7,7 @@ height = 0.70 #darkest value, set to 70%
 gl.loadimage('mni152')
 
 # Load contrast (jet)
-gl.overlayload('/home/neel/Documents/SPM_results/second_level/SPM-A_II/spmT_0001_peak-scaled.nii.gz')  
+gl.overlayload('/home/neel/Documents/SPM_results/second_level/SPM-A_II/spmT_0001_Ke_20_peak-scaled.nii.gz')  
 gl.minmax(1, height, 1)  
 gl.colorname(1, 'jet')  
 gl.opacity(1, 100)  # Fully opaque

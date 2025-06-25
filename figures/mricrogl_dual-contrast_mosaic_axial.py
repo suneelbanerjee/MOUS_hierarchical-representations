@@ -7,7 +7,7 @@ height = 0.50 #darkest value, set to 50%
 gl.loadimage('mni152')
 
 # Load first contrast (red, words)
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II/spmT_0001_peak-scaled.nii.gz')  
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II/spmT_0001_Ke_20_peak-scaled.nii.gz')  
 gl.minmax(1, height, 1)  
 gl.colorname(1, '1red')  
 gl.opacity(1, 100)  # Fully opaque
@@ -15,7 +15,7 @@ gl.colorfromzero(1, 1)  # Set color range to start from zero for the first overl
 
 
 # Load second contrast (blue, sublexical)
-gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II_bigram/spmT_0001_peak-scaled.nii.gz')  
+gl.overlayload('/Users/neel/Desktop/second_level/SPM-V_II_bigram/spmT_0001_Ke_20_peak-scaled.nii.gz')  
 gl.minmax(2, height, 1)  
 gl.colorname(2, '7cool')  
 gl.opacity(2, 100)  # Fully opaque
