@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/reviewer_suggestions/visual_len0_WF0_minBG1'
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/visual_WF0_minBG1'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -68,19 +68,19 @@ for v=1:length(subjNames)
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
 
         %REGRESSOR 1: WORD LENGTH
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = word_regressors.WordLength %- mean(regressors.Lg10WF);
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
+        %matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
+        %matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = word_regressors.WordLength - mean(word_regressors.WordLength);
+        %matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
 
         %REGRESSOR 2: ZIPF Word Frequency
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).name = 'Word Frequency';
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).param = 0-word_regressors.Zipf %- mean(regressors.Lg10WF);
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).poly = 1;
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Frequency';
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0- (word_regressors.Zipf - mean(word_regressors.Zipf));
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
 
         %REGRESSOR 3: BIGRAM FREQUENCY (MIN). Do confirm the r2 between minBGfreq and Zipf before usng it as a regressor here- don't want to destroy the entire effect!
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(3).name = 'Min BG Frequency';
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(3).param = 0-sublex_regressors.log10_Min_Bigram %- mean(regressors.Lg10WF);
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(3).poly = 1;
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).name = 'Min BG Frequency';
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).param = 0-(sublex_regressors.log10_Min_Bigram -mean(sublex_regressors.log10_Min_Bigram));
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).poly = 1;
 
         %Settings
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
@@ -92,8 +92,10 @@ for v=1:length(subjNames)
         % Define the output file name
         output_file = fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt'));
         % Write the motion regressors to a text file
-        dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
-        disp(['Motion regressors written to: ', output_file]);
+        if ~isfile(output_file)
+            dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
+            disp(['Motion regressors written to: ', output_file]);
+        end
         matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
         %end of motion regressor lines
         %matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {''};
@@ -117,8 +119,8 @@ for v=1:length(subjNames)
         clear matlabbatch
         %5. Contrast
         matlabbatch{1}.spm.stats.con.spmmat(1) = {fullfile(AnalysisDirectory, 'SPM.mat')};
-        matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = char(strcat("Bigram Frequency Correlation"));
-        matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 0 1 0];
+        matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = char(strcat("Bigram Frequency Correlation (regressing out word frequency, no length control)"));
+        matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0];
         matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
         matlabbatch{1}.spm.stats.con.delete = 0;
         spm_jobman('run',matlabbatch)

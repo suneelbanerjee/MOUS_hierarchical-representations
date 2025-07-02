@@ -5,10 +5,6 @@
 			"path": "."
 		},
 		{
-			"name": "SPM_results",
-			"path": "../../Documents/SPM_results"
-		},
-		{
 			"name": "Desktop",
 			"path": ".."
 		},
@@ -22,6 +18,12 @@
 		},
 		{
 			"path": "../.."
+		},
+		{
+			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SPM_results"
+		},
+		{
+			"path": "SPM_scripts"
 		}
 	],
 	"settings": {}

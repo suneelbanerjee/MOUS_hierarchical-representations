@@ -1,33 +1,28 @@
-%2024 SPM auditory 
+%SPM12 First-level analysis. Requires an 'outdir' to save output, a 'sourcedir' where the regressor data (frequency tables) is saved, and a 'subject_path' where the preprocessed data is saved. 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/SPM-A_multireg_neg-contrast_test';
-sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source';
-
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-A_bigrams';
 mkdir(outdir)
+sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
 cd(subject_path)
-%mkdir SPM-A
 subjects = dir('sub-A*');
 subjNames = extractfield(subjects, 'name');
-cd('/home/neel/Desktop/MOUS_hierarchical-representations')
-for m = 1:length(subjNames) %subj index. 
-    currentName = subjNames(m)
-    %if using new regressors:
-    regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_word_frequencies.csv'))));
-    transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
-    %if using old regressors:
-    %regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_regressors.xlsx'))));
+cd('/home/neel/Desktop/MOUS_hierarchical-representations') %change this to the location of the cloned code repo. 
 
-    
-    % %Remove rows with NaN values
-    % notmissingidx = ~ismissing(regressors);
-    % removedidx = find(~notmissingidx);
-    % transcription = transcription(notmissingidx(:,3),:);
-    % regressors = rmmissing(regressors);
+for m = 1:length(subjNames)
+    currentName = subjNames(m);
+    regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_bigram_frequency'))),'Delimiter',',');
+    disp(strcat("Number of onsets  = ", num2str(height(regressors))));
+
 
     % replace rows with NaN values with 0s
     numericVars = varfun(@isnumeric, regressors, 'OutputFormat', 'uniform');
     regressors{:, numericVars} = fillmissing(regressors{:, numericVars}, 'constant', 0);
 
+    % Identify rows with Inf values
+    inf_rows = any(isinf(regressors{:, numericVars}), 2);
+
+    % Replace Inf values with 0s within numeric variables
+    regressors{inf_rows, numericVars} = 0;
 
     %%0. Coregister. Uncomment and modify the below if this was not done by fmriprep. 
     
@@ -82,7 +77,7 @@ for m = 1:length(subjNames) %subj index.
     % matlabbatch{1}.spm.spatial.preproc.warp.vox = NaN;
     % matlabbatch{1}.spm.spatial.preproc.warp.bb = [NaN NaN NaN
     %                                               NaN NaN NaN];
- 
+
     %1. FILE FINDING
     %gunzip
     if isfile(char(fullfile(subject_path,currentName,'func',strcat(currentName,'_task-auditory_space-MNI152NLin6Asym_res-2_desc-preproc_bold.nii.gz'))))
@@ -110,7 +105,7 @@ for m = 1:length(subjNames) %subj index.
     mkdir(char(fullfile(outdir, currentName)))
     disp('Directory Created')
     AnalysisDirectory = fullfile(outdir, currentName);
-    if exist(char(fullfile(AnalysisDirectory, 'SPM.mat')))
+    if exist(char(fullfile(AnalysisDirectory, 'SPM.mat')),'file')
         continue
     end
     matlabbatch{1}.spm.stats.fmri_spec.dir = AnalysisDirectory;
@@ -133,23 +128,18 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
     %length control. used to test effects of word length/duration, but not part of final analysis. 
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration; %transcription.Duration - mean(transcription.Duration)%demean
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Length';
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Duration %demean
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - regressors.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
-    %regressor 3, sublexical frequency
-    
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Bigram Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - (regressors.LogMin_Bigram_Frequency - mean(regressors.LogMin_Bigram_Frequency))
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
     %Motion regressors. These should be produced by fmriprep. 
     ConfoundsRegressors = tdfread(char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-auditory_desc-confounds_regressors.tsv'))));
-    %rp_name = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ConfoundsRegressors.trans_z, ConfoundsRegressors.rot_z];
-    % Define the subject path and file name
-
     % Extract the relevant columns
     motion_regressors = [ConfoundsRegressors.trans_x, ConfoundsRegressors.rot_x, ...
                         ConfoundsRegressors.trans_y, ConfoundsRegressors.rot_y, ...
@@ -159,15 +149,11 @@ for m = 1:length(subjNames) %subj index.
     output_file = fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt'));
 
     % Write the motion regressors to a text file
-    if ~exist(char(output_file))
+    if ~isfile(output_file)
         dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
         disp(['Motion regressors written to: ', output_file]);
-
     end
-
-
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
-
     matlabbatch{1}.spm.stats.fmri_spec.sess.hpf = 128;
     matlabbatch{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
     matlabbatch{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
@@ -188,8 +174,8 @@ for m = 1:length(subjNames) %subj index.
     clear matlabbatch
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Auditory Bigram Frequency';
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 1 0]; %edit if including duration control. 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)
