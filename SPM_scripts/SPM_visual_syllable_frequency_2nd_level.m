@@ -1,10 +1,8 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/second_level/SPM-V_II'
-%'/home/neel/Documents/SPM_results/second_level/SPM-V_II_Zipf_multireg_december_allsubs';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Zipf_multireg')
-%
-% fullfile('/home/neel/Documents/SPM_results/SPM-V_Zipf_multireg');
+output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/crossmodal/visual_syllable_frequency';
+firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_logmin_syllable_frequency');
+%default = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 mkdir(output)
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))
@@ -41,7 +39,7 @@ spm_jobman('run',matlabbatch)
 clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency Correlation';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Visual Syllable Frequency';
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;
@@ -52,7 +50,7 @@ matlabbatch{1}.spm.stats.results.spmmat = {fullfile(output, 'SPM.mat')};
 matlabbatch{1}.spm.stats.results.conspec.titlestr = '';
 matlabbatch{1}.spm.stats.results.conspec.contrasts = 1;
 matlabbatch{1}.spm.stats.results.conspec.threshdesc = 'none';
-matlabbatch{1}.spm.stats.results.conspec.thresh = 1e-07;
+matlabbatch{1}.spm.stats.results.conspec.thresh = 1e-02;
 matlabbatch{1}.spm.stats.results.conspec.extent = 10;
 matlabbatch{1}.spm.stats.results.conspec.conjunction = 1;
 matlabbatch{1}.spm.stats.results.conspec.mask.none = 1;

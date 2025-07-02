@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Zipf_multireg'
+outdir = '/home/neel/Documents/SPM_results/mean_centered/SPM-V_Zipf' %MEAN-CENTERED! 6/25/25
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -62,10 +62,10 @@ for v=1:length(subjNames)
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).duration = 0;
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength %- mean(regressors.Lg10WF);
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength - mean(regressors.WordLength);
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).name = 'Word Frequency';
-        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).param = 0-regressors.Zipf %- mean(regressors.Lg10WF);
+        matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).param = 0-(regressors.Zipf - mean(regressors.Zipf));
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(2).poly = 1;
         matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
         
@@ -77,8 +77,10 @@ for v=1:length(subjNames)
         % Define the output file name
         output_file = fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt'));
         % Write the motion regressors to a text file
-        dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
-        disp(['Motion regressors written to: ', output_file]);
+        if ~isfile(output_file)
+            dlmwrite(char(output_file), motion_regressors, 'delimiter', '\t', 'precision', 6);
+            disp(['Motion regressors written to: ', output_file]);
+        end
         matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {char(fullfile(subject_path, currentName, '/func/', strcat(currentName, '_motion_regressors.txt')))};
         %end of motion regressor lines
         %matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = {''};

@@ -2,10 +2,12 @@
 % Takes in an 'output' directory to save output,
 % and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/second_level/SPM-A_II_syllables_IPA_eSpeak_ijfix2'
-%'/home/neel/Documents/SPM_results/SPM-A_II_syllables_IPA_eSpeak';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_eSpeak_ijfix2')
-%fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_eSpeak');
+output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/second_level/auditory_WF0_syll1'
+%'/home/neel/Documents/SPM_results/second_level/SPM-A_II_syllables_IPA_eSpeak_ijfix2'
+
+firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/auditory_WF0_syll1')
+%fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_eSpeak_ijfix2')
+
 
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))

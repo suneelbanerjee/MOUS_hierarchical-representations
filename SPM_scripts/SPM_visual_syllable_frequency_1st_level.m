@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_logmin_syllable_frequency'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -12,9 +12,9 @@ subjNames = extractfield(subjects, 'name');
 
 for v=1:length(subjNames)
     currentName = char(subjNames(v))
-    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed.csv'))),'Delimiter',',');
+    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_syllable_frequency.csv'))),'Delimiter',',');
     % Remove rows with NaN values
-    %regressors = rmmissing(regressors);
+    regressors = rmmissing(regressors);
     %1. File Selection
     try
         ims = cellstr(spm_select('expand',[fullfile(subject_path, currentName, '/func/', strcat(currentName, '_task-visual_space-MNI152NLin6Asym_res-2_desc-preproc_bold.nii'))]));
@@ -55,19 +55,15 @@ for v=1:length(subjNames)
     %Return to Batch
     matlabbatch{1}.spm.stats.fmri_spec.sess.scans = cellstr(spm_select('expand', [fullfile(SmoothedScan.folder, SmoothedScan.name)]));
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).name = 'Word';
-    %Get master document of word data
+
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).onset = regressors.Onset
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
-    %should length control be applied here?
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength %- mean(regressors.log10_Min_Bigram);
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Min Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Log Min Syllable Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - (regressors.LogMinSyllableFrequency - mean(regressors.LogMinSyllableFrequency));
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
     %Motion regressors (produced by fmriprep)
@@ -104,7 +100,7 @@ for v=1:length(subjNames)
     clear matlabbatch
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {fullfile(AnalysisDirectory, 'SPM.mat')};
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = char(strcat("Bigram Frequency Correlation"));
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = char('Visual Syllable Frequency Correlation');
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 1 0];
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;

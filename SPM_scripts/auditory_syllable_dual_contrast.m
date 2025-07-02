@@ -7,7 +7,7 @@
 
 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/reviewer_suggestions/auditory_dur0_WF0_syll1';
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_WF0_syll1';
 mkdir(outdir)
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
 cd(subject_path)
@@ -97,17 +97,17 @@ for m = 1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
     %regressor 1, length control. used to test effects of word length/duration, but not part of final analysis. 
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration; %transcription.Duration - mean(transcription.Duration)%demean
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
+    %matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
+    %matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration - mean(transcription.Duration)%demean
+    %matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 2, word frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Word Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - word_regressors_edited.Zipf; %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - (word_regressors_edited.Zipf - mean(word_regressors_edited.Zipf)); %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
     %regressor 3, sublexical frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).param = 0 - regressors.Min_Freq_Count;
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).poly = 1;
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Syllable Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - (regressors.Min_Freq_Count - mean(regressors.Min_Freq_Count));
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
@@ -146,8 +146,8 @@ for m = 1:length(subjNames)
     clear matlabbatch
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 0 1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Syllable Frequency no duration control';
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0]; %edit if including duration control. 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)
