@@ -1,7 +1,7 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/reviewer_suggestions/mean_centered/SPM-V_Zipf')
-output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/reviewer_suggestions/second_level/mean_centered/SPM-V_Zipf_demeaned_II'
+firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/reviewer_suggestions/first_level/visual_len0_minBG0_WF1')
+output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/reviewer_suggestions/second_level/SPM_visual_len0_minBG0_WF1_II_v2'
 %
 % fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_Zipf_multireg');
 mkdir(output)

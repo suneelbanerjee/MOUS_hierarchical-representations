@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Lg10_max_bigram'
+outdir = '/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Lg10_max_bigram_plus1'
 if ~exist(outdir,'dir')
     mkdir(outdir)
 end
@@ -14,7 +14,7 @@ subjNames = extractfield(subjects, 'name');
 
 for v=1:length(subjNames)
     currentName = char(subjNames(v))
-    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed_max_mean.csv'))),'Delimiter',',');
+    regressors = readtable(char(fullfile(source, currentName, 'func', strcat(currentName,'_bigrams_processed.csv'))),'Delimiter',',');
     % Remove rows with NaN values
     %regressors = rmmissing(regressors);
     %1. File Selection
@@ -63,10 +63,10 @@ for v=1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
     %should length control be applied here?
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Word Length';
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength %- mean(regressors.log10_Min_Bigram);
+    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = regressors.WordLength - mean(regressors.log10_Min_Bigram);
     % matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Max Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - regressors.log10_Max_Bigram %- mean(regressors.log10_Min_Bigram);
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - (regressors.log10_Max_plus1_Bigram - mean(regressors.log10_Max_plus1_Bigram));
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     

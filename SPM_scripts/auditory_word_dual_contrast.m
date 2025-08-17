@@ -6,7 +6,7 @@
 %This one controls for sublexical frequency (min) when testing word frequency.
 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_syll0_WF1';
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_dur0_syll1_WF1';
 mkdir(outdir)
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
 cd(subject_path)
@@ -89,7 +89,7 @@ for m = 1:length(subjNames)
     end
     cd(subject_path)
    %%%%%%%%%%REGRESSOR DEFINITION
-%regressor 0, onset
+    %regressor 0, onset
     matlabbatch{1}.spm.stats.fmri_spec.sess.scans = cellstr(spm_select('expand', [fullfile(SmoothedScan.folder, SmoothedScan.name)]));
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.name = 'Onset';
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.onset= regressors.AlignOnset;
@@ -147,8 +147,11 @@ for m = 1:length(subjNames)
     clear matlabbatch
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency';
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 0 1 0]; 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Syllable Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0 0]; 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)

@@ -4,7 +4,8 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
+outdir = '/home/neel/Documents/SPM_results/SPM-V_Lg10_plus1_BG_august_lengthcontrol'
+%'/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -61,7 +62,8 @@ for v=1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
 
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Min Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0-(regressors.log10_Min_plus1_Bigram - mean(regressors.log10_Min_plus1_Bigram))
+    %0 - regressors.log10_Min_Bigram %- mean(regressors.log10_Min_Bigram);
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;
     

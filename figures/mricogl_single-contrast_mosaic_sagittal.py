@@ -1,30 +1,39 @@
 import gl
 
 gl.resetdefaults()
-gl.backcolor(0, 0, 0)  # Set dark background
-height = 0.70 #darkest value, set to 70%
-# Load MNI template
+gl.backcolor(255, 255, 255)        # white background
 gl.loadimage('mni152')
 
-# Load contrast (jet)
-gl.overlayload('/home/neel/Documents/SPM_results/second_level/SPM-A_II/spmT_0001_Ke_20_peak-scaled.nii.gz')  
-gl.minmax(1, height, 1)  
-gl.colorname(1, 'jet')  
-gl.opacity(1, 100)  # Fully opaque
+gl.overlayload('/Users/neel/Desktop/SPM_Aug_2025/SYLLABLES/SPM_syllables_guslatho_Log10/spmZ_0001_thr_p1e-12_k20vox.nii')   # unthresholded Z (or thresholded with NaNs)
+gl.colorname(1, 'jet')
+gl.opacity(1, 100)
 
+gl.minmax(1, 7, 8.126)           # FULL image range (will include negatives if present)
+gl.colorbarposition(1)
 
-# Ensure the cross-slice view is OFF
-gl.shaderadjust('crosshairs', 0)  # Disable crosshairs
+gl.shaderadjust('crosshairs', 0)
+gl.mosaic("S H -0.3 64 62 60 58 56 54 52")
+gl.savebmp("/Users/neel/Desktop/SPM_Aug_2025/SYLLABLES/renderings/right.png")
+gl.mosaic("Z H -0.3 -64 -62 -60 -58 -56 -54 -52")
+gl.savebmp("/Users/neel/Desktop/SPM_Aug_2025/SYLLABLES/renderings/left.png")
 
-# Turn off the colorbar
-gl.colorbarposition(0)
+gl.resetdefaults()
 
-# Generate mosaic (axial slices only, no cross-slice view)
-gl.mosaic("S H -0.3 62 60 58 56 54 52")
+import gl
 
-# Save the mosaic
-gl.savebmp("/Users/neel/Desktop/second_level/auditory_syll_sagR.png")
+gl.resetdefaults()
+gl.backcolor(255, 255, 255)        # white background
+gl.loadimage('mni152')
 
-gl.mosaic("Z H -0.3 -62 -60 -58 -56 -54 -52")  # Axial-only, single row")
+gl.overlayload('/Users/neel/Desktop/SPM_Aug_2025/AUDITORY/SPM-A_II/spmZ_0001_thr_p1e-12_k20vox.nii')   # unthresholded Z (or thresholded with NaNs)
+gl.colorname(1, 'jet')
+gl.opacity(1, 100)
 
-gl.savebmp("/Users/neel/Desktop/second_level/auditory_syll_sagL.png")
+gl.minmax(1, 7, 8.126)           # FULL image range (will include negatives if present)
+gl.colorbarposition(1)
+
+gl.shaderadjust('crosshairs', 0)
+gl.mosaic("S H -0.3 64 62 60 58 56 54 52")
+gl.savebmp("/Users/neel/Desktop/SPM_Aug_2025/AUDITORY/renderings/right.png")
+gl.mosaic("Z H -0.3 -64 -62 -60 -58 -56 -54 -52")
+gl.savebmp("/Users/neel/Desktop/SPM_Aug_2025/AUDITORY/renderings/left.png")

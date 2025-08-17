@@ -24,6 +24,9 @@
 		},
 		{
 			"path": "SPM_scripts"
+		},
+		{
+			"path": "../../Documents/SPM_results"
 		}
 	],
 	"settings": {}
