@@ -1,0 +1,1 @@
+Tthr=7.41072880  source=RFT (alpha=1e-06)

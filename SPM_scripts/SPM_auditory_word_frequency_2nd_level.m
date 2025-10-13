@@ -1,7 +1,8 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_dur0_syll1_WF1');
-output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/second_level/SPM_auditory_dur0_syll1_WF1_II';
+firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_guslatho_dur0_syll0_WF1')
+%fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered/auditory_dur0_syll1_WF1');
+output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/second_level/SPM_auditory_dur0_syll0_WF1_II';
 mkdir(output)
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
 cd(char(firstlevel_dir))

@@ -4,7 +4,7 @@ subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
 %replace with directory containing source data.
 source = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'
 %replace with directory for output.  
-outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_logmin_syllable_frequency'
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_guslatho_logmin_syllable_frequency_2'
 
 cd(subject_path) 
 subjects = dir('sub-V*');
@@ -60,7 +60,7 @@ for v=1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).tmod = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).name = 'Log Min Syllable Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - (regressors.LogMinSyllableFrequency - mean(regressors.LogMinSyllableFrequency));
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).param = 0 - (regressors.Min_Log10_FreqCount - mean(regressors.Min_Log10_FreqCount));
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).pmod(1).poly = 1;
     
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond(1).orth = 0;

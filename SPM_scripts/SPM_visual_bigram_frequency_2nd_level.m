@@ -1,8 +1,9 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/second_level/SPM-V_Lg10_mean_plus1_BG_august_II'
+output = '/home/neel/Documents/SPM_results/second_level/SPM-V_Lg10_plus1_BG_august_lengthcontrol_II'
 %'/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/second_level/visual_WF0_minBG1';
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Lg10_mean_bigram_plus1')
+firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10_plus1_BG_august_lengthcontrol')
+%fullfile('/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-V_Lg10_mean_bigram_plus1')
 %fullfile('/home/neel/Documents/SPM_results/SPM-V_Lg10_plus1_BG_august')
 %fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/visual_WF0_minBG1');
 %default = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
@@ -42,7 +43,7 @@ spm_jobman('run',matlabbatch)
 clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Min Bigram Frequency Correlation (log10(freqcount + 1))';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Min Bigram Frequency Correlation (log10(freqcount + 1), length_control)';
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;

@@ -1,6 +1,6 @@
 %SPM12 First-level analysis. Requires an 'outdir' to save output, a 'sourcedir' where the regressor data (frequency tables) is saved, and a 'subject_path' where the preprocessed data is saved. 
 subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-A_bigrams';
+outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-A_bigrams_plus1';
 mkdir(outdir)
 sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
 cd(subject_path)

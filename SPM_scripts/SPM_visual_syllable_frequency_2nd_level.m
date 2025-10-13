@@ -1,7 +1,7 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/crossmodal/visual_syllable_frequency';
-firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_logmin_syllable_frequency');
+output = '/media/neel/MOUS/MOUS/MOUS/SPM_results/crossmodal/visual_syllable_frequency_guslatho_II';
+firstlevel_dir = fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_guslatho_logmin_syllable_frequency_2');
 %default = '/home/neel/Documents/SPM_results/SPM-V_Lg10BG_multireg_november'
 mkdir(output)
 matlabbatch{1}.spm.stats.factorial_design.dir = {output};
