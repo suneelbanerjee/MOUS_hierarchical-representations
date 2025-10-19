@@ -2,3 +2,5 @@ deprecated/
 .venv/
 .vscode/
 guslatho/venv
+# Local virtualenvs
+/guslatho/venv/
