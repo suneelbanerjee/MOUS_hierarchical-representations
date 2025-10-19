@@ -4,3 +4,8 @@ deprecated/
 guslatho/venv
 # Local virtualenvs
 /guslatho/venv/
+
+# Local virtualenvs
+/guslatho/venv/
+venv/
+.venv/
