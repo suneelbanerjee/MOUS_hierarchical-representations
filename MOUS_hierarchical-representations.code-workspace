@@ -1,32 +1,19 @@
 {
 	"folders": [
 		{
-			"name": "MOUS_hierarchical-representations",
 			"path": "."
 		},
 		{
-			"name": "Desktop",
-			"path": ".."
+			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/SPM_results"
 		},
 		{
-			"name": "source",
-			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SynologyDrive/source"
+			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/SynologyDrive/source"
 		},
 		{
-			"name": "fmriprep_fresh",
-			"path": "../../../../media/neel/MOUS/MOUS/MOUS/fmriprep_fresh"
+			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/fmriprep_fresh"
 		},
 		{
-			"path": "../.."
-		},
-		{
-			"path": "../../../../media/neel/MOUS/MOUS/MOUS/SPM_results"
-		},
-		{
-			"path": "SPM_scripts"
-		},
-		{
-			"path": "../../Documents/SPM_results"
+			"path": "../mous_experiment"
 		}
 	],
 	"settings": {}
