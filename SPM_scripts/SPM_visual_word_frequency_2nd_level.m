@@ -1,7 +1,7 @@
 %SPM12 Group-level analysis script. Takes in an 'output' directory to save output, and a 'firstlevel_dir' that contains all first-level results folders as input.
 
 firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/mean_centered/SPM-V_Zipf_first_occurrences')
-output = '/home/neel/Documents/SPM_results/mean_centered/SPM-V_Zipf_first_occurrences_II'
+output = '/home/neel/Documents/SPM_results/repeat_count/SPM-V_Zipf_repeatcounts_II'
 %
 % fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-V_Zipf_multireg');
 mkdir(output)
@@ -20,7 +20,6 @@ end
 
 scans = transpose(scans);
 matlabbatch{1}.spm.stats.factorial_design.des.t1.scans = scans(~cellfun('isempty',scans));
-
 matlabbatch{1}.spm.stats.factorial_design.cov = struct('c', {}, 'cname', {}, 'iCFI', {}, 'iCC', {});
 matlabbatch{1}.spm.stats.factorial_design.multi_cov = struct('files', {}, 'iCFI', {}, 'iCC', {});
 matlabbatch{1}.spm.stats.factorial_design.masking.tm.tm_none = 1;
@@ -40,7 +39,7 @@ spm_jobman('run',matlabbatch)
 clear matlabbatch
 
 matlabbatch{1}.spm.stats.con.spmmat = {fullfile(output, 'SPM.mat')};
-matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency Correlation (Regressing out min bigram frequency)';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Word Frequency Correlation w repeat count control';
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = 1;
 matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 matlabbatch{1}.spm.stats.con.delete = 0;

@@ -1,6 +1,6 @@
 %2024 SPM auditory 
 subject_path = '/media/neel/MOUS1/MOUS/MOUS/fmriprep_fresh';
-outdir = '/home/neel/Documents/SPM_results/mean-centered/SPM-A_Zipf_first_occurrence';
+outdir = '/home/neel/Documents/SPM_results/mean-centered/SPM-A_Zipf_repeat_counts';
 sourcedir = '/media/neel/MOUS1/MOUS/MOUS/SynologyDrive/source';
 
 mkdir(outdir)
@@ -12,8 +12,8 @@ cd('/home/neel/Desktop/MOUS_hierarchical-representations')
 for m = 1:length(subjNames) %subj index. 
     currentName = subjNames(m)
     %if using new regressors:
-    regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_first_occurrences.csv'))));
-    transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_first_occurrences_transcription.csv'))));
+    regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_repeat_counts.csv'))));
+    transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
     %if using old regressors:
     %regressors = readtable(char(fullfile(sourcedir, currentName, 'func',strcat(currentName,'_regressors.xlsx'))));
 
@@ -136,10 +136,16 @@ for m = 1:length(subjNames) %subj index.
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Word Length (seconds)';
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration - mean(transcription.Duration)%demean
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
-    %regressor 2, frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - (regressors.Zipf - mean(regressors.Zipf)); %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+
+    %repeat counts. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Repeat counts';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - (log10(1+regressors.prior_count) - mean(log10(1+regressors.prior_count)))%demean
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
+
+    %regressor 2, frequency
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).name = 'Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).param = 0 - (regressors.Zipf - mean(regressors.Zipf)); %Lg10WF and Zipf represent two alternate logarithmic measures of word frequency. 
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(3).poly = 1;
     %regressor 3, sublexical frequency
     
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
@@ -189,7 +195,7 @@ for m = 1:length(subjNames) %subj index.
     %5. Contrast
     matlabbatch{1}.spm.stats.con.spmmat(1) = {char(fullfile(AnalysisDirectory, 'SPM.mat'))};
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'Frequency';
-    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 1 0]; %edit if including duration control. 
+    matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [0 0 0 1 0]; %edit if including duration control. 
     matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
     matlabbatch{1}.spm.stats.con.delete = 0;
     spm_jobman('run',matlabbatch)

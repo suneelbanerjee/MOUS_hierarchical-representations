@@ -4,16 +4,16 @@
 			"path": "."
 		},
 		{
-			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/SPM_results"
-		},
-		{
 			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/SynologyDrive/source"
 		},
 		{
 			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/fmriprep_fresh"
 		},
 		{
-			"path": "../mous_experiment"
+			"path": "../../Documents/SPM_results"
+		},
+		{
+			"path": "../../../../media/neel/MOUS1/MOUS/MOUS/SPM_results"
 		}
 	],
 	"settings": {}
