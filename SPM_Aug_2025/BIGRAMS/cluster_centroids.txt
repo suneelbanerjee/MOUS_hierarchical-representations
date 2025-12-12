@@ -1,0 +1,36 @@
+Processing T-map: /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/spmT_0001.nii
+Using threshold: 7.41
+Saving results to: /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_centroids.csv
+Found 7 clusters (before extent threshold).
+Saved cluster 1 with 195 voxels to /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_1.nii
+Saved cluster 2 with 188 voxels to /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_2.nii
+Saved cluster 3 with 97 voxels to /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_3.nii
+Saved cluster 4 with 424 voxels to /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_4.nii
+Saved cluster 5 with 66 voxels to /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II/roi/cluster_5.nii
+Retained 5 clusters (after extent threshold).
+Cluster 1:
+  Centroid = [-24, -92, -9]
+  Peak = [-18, -94, -8]
+  Peak T-value = 12.93
+  Extent = 424 voxels
+Cluster 2:
+  Centroid = [-55, -9, -10]
+  Peak = [-58, -10, -8]
+  Peak T-value = 10.77
+  Extent = 188 voxels
+Cluster 3:
+  Centroid = [-54, -36, 3]
+  Peak = [-50, -38, 2]
+  Peak T-value = 9.32
+  Extent = 195 voxels
+Cluster 4:
+  Centroid = [-49, 32, 1]
+  Peak = [-46, 32, -2]
+  Peak T-value = 9.25
+  Extent = 97 voxels
+Cluster 5:
+  Centroid = [24, -93, -4]
+  Peak = [24, -96, -2]
+  Peak T-value = 8.83
+  Extent = 66 voxels
+Processing completed for /Users/neel/Desktop/SPM_Aug_2025/BIGRAMS/SPM-V_Lg10_plus1_BG_august_II
