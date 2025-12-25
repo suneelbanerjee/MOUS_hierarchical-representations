@@ -1,0 +1,10 @@
+roi_label	network
+auditory_clusters:cluster_1	auditory_clusters
+auditory_clusters:cluster_2	auditory_clusters
+auditory_clusters:cluster_3	auditory_clusters
+auditory_clusters:cluster_4	auditory_clusters
+auditory_clusters:cluster_5	auditory_clusters
+auditory_clusters:cluster_6	auditory_clusters
+auditory_clusters:cluster_7	auditory_clusters
+syllables_clusters:cluster_1	syllables_clusters
+syllables_clusters:cluster_2	syllables_clusters

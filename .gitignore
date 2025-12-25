@@ -1,19 +1,19 @@
-deprecated/
-.venv/
-.vscode/
-guslatho/venv
-# Local virtualenvs
-/guslatho/venv/
+# deprecated/
+# .venv/
+# .vscode/
+# guslatho/venv
+# # Local virtualenvs
+# /guslatho/venv/
 
-# Local virtualenvs
-/guslatho/venv/
-venv/
-.venv/
+# # Local virtualenvs
+# /guslatho/venv/
+# venv/
+# .venv/
 
-titan.pub
+# titan.pub
 
-functional_connectivity_results
-visual_fc_results_1st_level
-auditory_fc_results_1st_level
-auditory_fc_results_2nd_level
-results
+# functional_connectivity_results
+# visual_fc_results_1st_level
+# auditory_fc_results_1st_level
+# auditory_fc_results_2nd_level
+# results

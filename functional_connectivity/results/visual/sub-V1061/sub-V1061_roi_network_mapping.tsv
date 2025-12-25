@@ -1,0 +1,11 @@
+roi_label	network
+bigrams_clusters:cluster_1	bigrams_clusters
+bigrams_clusters:cluster_2	bigrams_clusters
+bigrams_clusters:cluster_3	bigrams_clusters
+bigrams_clusters:cluster_4	bigrams_clusters
+bigrams_clusters:cluster_5	bigrams_clusters
+visual_clusters:cluster_1	visual_clusters
+visual_clusters:cluster_2	visual_clusters
+visual_clusters:cluster_3	visual_clusters
+visual_clusters:cluster_4	visual_clusters
+visual_clusters:cluster_5	visual_clusters
