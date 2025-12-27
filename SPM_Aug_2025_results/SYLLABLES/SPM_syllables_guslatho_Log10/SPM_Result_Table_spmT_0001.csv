@@ -1,0 +1,6 @@
+X,Y,Z,Region,Size (voxels),Cluster Peak T
+-64,-12,-2,"Superior Temporal Gyrus, posterior division",3455,12.19
+64,-4,-4,"Superior Temporal Gyrus, anterior division",2484,11.25
+-50,32,4,"Inferior Frontal Gyrus, pars triangularis",162,5.95
+-42,-42,-18,"Temporal Fusiform Cortex, posterior division",81,6.12
+-46,16,26,"Inferior Frontal Gyrus, pars opercularis",50,5.43

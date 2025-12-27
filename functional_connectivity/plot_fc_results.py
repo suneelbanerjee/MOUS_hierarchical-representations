@@ -115,7 +115,7 @@ def fisher_z_mean(corr_stack):
     return np.tanh(np.mean(z, axis=0))
 
 # ===============================
-# AAL ATLAS LOOKUP
+# AAL & LABEL GENERATION
 # ===============================
 
 def get_aal_labels_for_coords(coords):
@@ -142,20 +142,12 @@ def get_aal_labels_for_coords(coords):
         aal_labels.append(found_label)
     return aal_labels
 
-# ===============================
-# LABEL GENERATION
-# ===============================
-
 def clean_aal_label(label):
     clean = label.replace("_", " ")
-    clean = re.sub(r'\s+[LlRr]$', '', clean) # Remove trailing L or R
+    clean = re.sub(r'\s+[LlRr]$', '', clean) 
     return clean
 
 def generate_display_labels(coords, aal_names):
-    """
-    Generates the 'AAL + Coordinates' label strings used 
-    across all visualizations.
-    """
     display_labels = []
     print("\n" + "="*50)
     print(f"{'INDEX':<6} {'AAL REGION':<25} {'COORDS (X,Y,Z)':<20}")
@@ -164,46 +156,12 @@ def generate_display_labels(coords, aal_names):
     for i, ((x, y, z), aal) in enumerate(zip(coords, aal_names)):
         clean_name = clean_aal_label(aal)
         coord_str = f"({int(x)}, {int(y)}, {int(z)})"
-        
-        # Format for Plotting: "Region\n(x,y,z)"
         label_text = f"{clean_name}\n{coord_str}"
         display_labels.append(label_text)
-        
-        # Print summary to console
         print(f"{i+1:<6} {clean_name:<25} {coord_str:<20}")
         
     print("="*50 + "\n")
     return display_labels
-
-# ===============================
-# DATA LOADING
-# ===============================
-
-def load_existing_matrices(task_name, target_labels):
-    task_dir = OUTPUT_ROOT / task_name
-    if not task_dir.exists():
-        raise FileNotFoundError(f"No results found at {task_dir}.")
-    matrices = []
-    subjects = sorted([d for d in task_dir.iterdir() if d.is_dir()])
-    print(f"\nLooking for existing CSVs in {task_dir}...")
-    
-    required_prefixes = set(l.split(":")[0] for l in target_labels)
-    print(f"  [Strict Mode] Filtering for contrasts: {required_prefixes}")
-
-    for subj_dir in subjects:
-        subj_label = subj_dir.name
-        csv_path = subj_dir / f"{subj_label}_correlation_matrix.csv"
-        if csv_path.exists():
-            df = pd.read_csv(csv_path, index_col=0)
-            valid_indices = [idx for idx in df.index if any(idx.startswith(p) for p in required_prefixes)]
-            df_filtered = df.loc[valid_indices, valid_indices]
-            missing = [l for l in target_labels if l not in df_filtered.index]
-            if missing: continue
-            df_subset = df_filtered.loc[target_labels, target_labels]
-            matrices.append(df_subset.values)
-
-    print(f"Loaded {len(matrices)} matrices matching criteria.")
-    return np.array(matrices) if matrices else None
 
 # ===============================
 # PLOTTING FUNCTIONS
@@ -211,7 +169,7 @@ def load_existing_matrices(task_name, target_labels):
 
 def annotate_nodes_on_display(display, coords, display_labels):
     """
-    Places the pre-generated display_labels onto the brain map.
+    Places text labels (AAL + Coords).
     """
     for ax_name, ax_wrapper in display.axes.items():
         ax = getattr(ax_wrapper, 'ax', ax_wrapper) 
@@ -228,7 +186,6 @@ def annotate_nodes_on_display(display, coords, display_labels):
             else:
                 continue 
             
-            # Simple jitter fallback
             offset_y = 2.0 
             if not HAS_ADJUST_TEXT: offset_y += (i % 2) * 3 
 
@@ -245,14 +202,30 @@ def annotate_nodes_on_display(display, coords, display_labels):
                             force_text=(0.3, 0.5), expand_points=(1.5, 1.5)) 
             except Exception: pass
 
-def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name, display_labels):
+def trace_roi_outlines(display, roi_entries, node_colors):
+    """
+    Overlays the actual contours of the ROI NIfTI files onto the connectome plot.
+    """
+    print("  Tracing ROI outlines...")
+    for entry, color in zip(roi_entries, node_colors):
+        try:
+            # add_contours projects the 3D ROI onto the 2D glass brain axes
+            display.add_contours(str(entry['path']), colors=[color], linewidths=1.5, levels=[0.5])
+        except Exception as e:
+            print(f"    [Warning] Failed to trace {entry['roi_name']}: {e}")
+
+# ===============================
+# MAIN MENU
+# ===============================
+
+def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name, display_labels, roi_entries):
     group_dir.mkdir(parents=True, exist_ok=True)
     
     while True:
         print("\n" + "="*40)
         print(f"   VISUALIZATION MENU: {task_name.upper()}")
         print("="*40)
-        print("1. Static Connectome (Brain Map)")
+        print("1. Static Connectome (Outlines + Labels)")
         print("2. Interactive 3D (HTML)")
         print("3. Correlation Matrix (Heatmap)")
         print("4. Exit")
@@ -266,7 +239,6 @@ def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name
             display_mode = view_map.get(v_choice, "ortho")
             
             thresh_raw = input("  > Threshold [80%]: ").strip()
-            # Threshold logic
             colorbar_label = "Connection Strength"
             if not thresh_raw:
                 threshold = "80%"
@@ -290,8 +262,8 @@ def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name
                     title_str = "Top 20% Connections"
                     colorbar_label = "Percentile Rank"
 
-            size_raw = input("  > Node Size [50]: ").strip()
-            node_size = float(size_raw) if size_raw else 50.0
+            size_raw = input("  > Node Size [30]: ").strip()
+            node_size = float(size_raw) if size_raw else 30.0
 
             suffix = input(f"  > Filename suffix [{display_mode}]: ").strip()
             if not suffix: suffix = display_mode
@@ -308,7 +280,10 @@ def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name
                 display_mode=display_mode, colorbar=False, figure=fig
             )
             
-            # Use the PRE-GENERATED labels
+            # 1. Trace Outlines (New Feature)
+            trace_roi_outlines(display, roi_entries, node_colors)
+            
+            # 2. Add Text Labels
             annotate_nodes_on_display(display, coords, display_labels)
 
             cbar_ax = fig.add_axes([0.3, 0.05, 0.4, 0.02]) 
@@ -343,13 +318,12 @@ def interactive_menu(group_avg_matrix, coords, node_colors, group_dir, task_name
             print("  Done.")
 
         elif choice == "3":
-            # --- CORRELATION MATRIX (HEATMAP) ---
-            # Uses the same "display_labels" for axes
+            # --- HEATMAP ---
             out_path = group_dir / f"group_{task_name}_matrix.png"
-            print(f"  Generating {out_path} with renamed axes...")
+            print(f"  Generating {out_path}...")
             
             fig = plt.figure(figsize=(14, 12))
-            # Replace newlines with spaces for the matrix to avoid label overlap issues on axes
+            # Use spaces instead of newlines for axis labels
             matrix_labels = [l.replace("\n", " ") for l in display_labels]
             
             plotting.plot_matrix(
@@ -379,17 +353,18 @@ if __name__ == "__main__":
     coords, labels, networks = get_roi_coordinates_from_entries(roi_entries)
     node_colors = [make_network_colors(networks)[n] for n in networks]
     
-    # 2. Generate & Review Labels (PRESENT FIRST)
-    aal_names = get_aal_labels_for_coords(coords)
-    display_labels = generate_display_labels(coords, aal_names)
-
-    # 3. Data Loading
+    # 2. Data Loading
     corr_stack = load_existing_matrices(task_name, labels)
     
     if corr_stack is None:
         print("Could not load matrices. Check ROI selection or Run processing.")
     else:
+        # 3. Generate Labels
+        aal_names = get_aal_labels_for_coords(coords)
+        display_labels = generate_display_labels(coords, aal_names)
+
         group_avg = fisher_z_mean(corr_stack)
         GROUP_DIR = OUTPUT_ROOT / f"{task_name}_group"
+        
         # 4. Interactive Menu
-        interactive_menu(group_avg, coords, node_colors, GROUP_DIR, task_name, display_labels)
+        interactive_menu(group_avg, coords, node_colors, GROUP_DIR, task_name, display_labels, roi_entries)

@@ -1,0 +1,17 @@
+X,Y,Z,Region,Size (voxels),Cluster Peak T
+-48,30,-2,"Inferior Frontal Gyrus, pars triangularis",2484,10.60
+-56,-12,-6,"Superior Temporal Gyrus, posterior division",1794,9.36
+-44,-50,-14,"Inferior Temporal Gyrus, temporooccipital part",1574,12.14
+48,20,26,"Inferior Frontal Gyrus, pars opercularis",414,6.13
+42,-84,-6,"Lateral Occipital Cortex, inferior division",193,6.12
+-22,-4,-14,Deep White Matter / CSF,115,8.11
+58,-6,-10,"Superior Temporal Gyrus, anterior division",107,5.73
+-4,14,58,Superior Frontal Gyrus,77,5.40
+-40,4,50,Middle Frontal Gyrus,52,5.36
+50,-30,2,"Superior Temporal Gyrus, posterior division",52,5.38
+32,-36,-22,"Temporal Fusiform Cortex, posterior division",46,5.59
+38,34,-12,Frontal Pole,44,6.02
+16,-76,-40,Deep White Matter / CSF,40,5.54
+-12,56,30,Frontal Pole,33,5.31
+-6,42,-20,Frontal Medial Cortex,33,5.52
+48,-50,-12,"Inferior Temporal Gyrus, temporooccipital part",26,4.96
