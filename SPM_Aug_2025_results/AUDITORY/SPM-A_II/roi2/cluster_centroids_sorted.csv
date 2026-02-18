@@ -1,0 +1,8 @@
+Cluster #,Centroid,Peak,Peak T-value,Extent,File Name
+1,"[-52, 3, -16]","[-52, -10, -12]",12.77,745,cluster_1_sorted.nii
+2,"[-52, -59, 20]","[-54, -60, 20]",11.04,317,cluster_2_sorted.nii
+3,"[-39, -36, -20]","[-40, -38, -18]",10.61,750,cluster_3_sorted.nii
+4,"[53, -8, -15]","[50, -10, -14]",9.99,86,cluster_4_sorted.nii
+5,"[-45, 32, -6]","[-46, 32, -6]",9.23,127,cluster_5_sorted.nii
+6,"[48, 18, -17]","[48, 18, -16]",8.84,37,cluster_6_sorted.nii
+7,"[-4, 47, -18]","[-4, 48, -18]",8.73,26,cluster_7_sorted.nii

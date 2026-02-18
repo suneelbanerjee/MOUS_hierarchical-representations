@@ -2,14 +2,16 @@
 % Takes in an 'output' directory to save output,
 % and a 'firstlevel_dir' that contains all first-level results folders as input.
 
-output = '/home/neel/Documents/SPM_results/second_level/SPM-A_syllables_IPA_guslatho_log10_lengthcontrol_II'
+output = '/media/lillianchang/MOUSnew/SPM_results/FIRST/first_syllable_2nd_level'
+%'/home/neel/Documents/SPM_results/second_level/SPM-A_syllables_IPA_guslatho_log10_lengthcontrol_II'
 %'/home/neel/Documents/SPM_results/second_level/SPM_syllables_guslatho_Log10_mean'
 %'/home/neel/Documents/SPM_results/second_level/SPM_syllables_guslatho_Log10'
 %'/home/neel/Documents/SPM_results/second_level/SPM_syllables_guslatho_syllableZipf_II'
 %'/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/second_level/auditory_WF0_syll1'
 %'/home/neel/Documents/SPM_results/second_level/SPM-A_II_syllables_IPA_eSpeak_ijfix2'
 
-firstlevel_dir = fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_guslatho_log10_lengthcontrol')
+firstlevel_dir = fullfile('/media/lillianchang/MOUSnew/SPM_results/FIRST/first_syllable')
+%fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_guslatho_log10_lengthcontrol')
 %fullfile('/home/neel/Documents/SPM_results/alternate_parameter_contrasts/SPM-A_syllables_guslatho_mean')
 %fullfile('/home/neel/Documents/SPM_results/SPM-A_syllables_IPA_guslatho_log10')
 %fullfile('/media/neel/MOUS/MOUS/MOUS/SPM_results/mean_centered_nolength/auditory_WF0_syll1')
