@@ -18,4 +18,5 @@
 # auditory_fc_results_2nd_level
 # results
 nilearn_cache/
-# SPM_Aug_2025_results/
+# SPM_Aug_2025_results/*.exe
+*.sh
