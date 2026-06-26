@@ -1,0 +1,26 @@
+[Warning: Name is nonexistent or not a directory:
+/media/lillianchang/SpeechArch/ARO_FMRI/Scripts] 
+spm_select appears several times in your MATLAB path:
+  /mnt/MOUSnew/spm12/spm_select.m (SHADOWING)
+  /home/lillianchang/AnalysisPrograms/spm12/spm_select.m
+{Error using cfg_getfile>reg_filter (line 1185)
+Unrecognized function or variable 'cfg_branch'.
+
+Error in cfg_getfile (line 177)
+            t = reg_filter(varargin{2:end});
+
+Error in spm_select (line 115)
+            cfg_getfile('regfilter', 'mesh',  {'\.gii$'});
+
+Error in spm_select (line 110)
+            spm_select('regfilter');
+
+Error in spm_select (line 97)
+    spm_select('init');
+
+Error in spm_jobman (line 173)
+            spm_select('init');
+
+Error in run_word_firstlevel (line 3)
+spm_jobman('initcfg');
+} 

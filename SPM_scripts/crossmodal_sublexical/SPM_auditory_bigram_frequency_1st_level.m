@@ -1,18 +1,18 @@
 %SPM12 First-level analysis. Requires an 'outdir' to save output, a 'sourcedir' where the regressor data (frequency tables) is saved, and a 'subject_path' where the preprocessed data is saved. 
-subject_path = '/media/neel/MOUS/MOUS/MOUS/fmriprep_fresh';
-outdir = '/media/neel/MOUS/MOUS/MOUS/SPM_results/SPM-A_bigrams_plus1';
+subject_path = '/mnt/MOUSnew/fmriprep_fresh';
+outdir = '/mnt/MOUSnew/SPM_results/SPM-A_bigrams_duration-control';
 mkdir(outdir)
-sourcedir = '/media/neel/MOUS/MOUS/MOUS/SynologyDrive/source'; 
+sourcedir = '/mnt/MOUSnew/SynologyDrive/source/SynologyDrive'; 
 cd(subject_path)
 subjects = dir('sub-A*');
 subjNames = extractfield(subjects, 'name');
-cd('/home/neel/Desktop/MOUS_hierarchical-representations') %change this to the location of the cloned code repo. 
+cd('/home/lillianchang/Documents/MOUS_hierarchical-representations') %change this to the location of the cloned code repo. 
 
 for m = 1:length(subjNames)
     currentName = subjNames(m);
     regressors = readtable(char(fullfile(sourcedir, currentName, 'func', strcat(currentName, '_bigram_frequency'))),'Delimiter',',');
     disp(strcat("Number of onsets  = ", num2str(height(regressors))));
-
+    transcription = readtable(char(fullfile(sourcedir,currentName,'func',strcat(currentName,'_transcription.csv'))));
 
     % replace rows with NaN values with 0s
     numericVars = varfun(@isnumeric, regressors, 'OutputFormat', 'uniform');
@@ -128,13 +128,13 @@ for m = 1:length(subjNames)
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.duration = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.tmod = 0;
     %length control. used to test effects of word length/duration, but not part of final analysis. 
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Length';
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = regressors.Duration %demean
-    % matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
-    %regressor 2, frequency
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Bigram Frequency';
-    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = 0 - (regressors.LogMin_Bigram_Frequency - mean(regressors.LogMin_Bigram_Frequency))
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).name = 'Duration';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).param = transcription.Duration %demean
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(1).poly = 1;
+    %regressor 2, frequency
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).name = 'Bigram Frequency';
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).param = 0 - (regressors.LogMin_Bigram_Frequency - mean(regressors.LogMin_Bigram_Frequency))
+    matlabbatch{1}.spm.stats.fmri_spec.sess.cond.pmod(2).poly = 1;
     matlabbatch{1}.spm.stats.fmri_spec.sess.cond.orth = 0;
     matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
     matlabbatch{1}.spm.stats.fmri_spec.sess.regress = struct('name', {}, 'val', {});
